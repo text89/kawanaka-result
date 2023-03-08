@@ -10,9 +10,6 @@ const table = generateTable(text[text.length-1]);
 tableContainer.innerHTML = '';
 tableContainer.appendChild(table);
 
-var resultSelect = document.getElementById('time-list');
-resultSelect.addEventListener('change', getSelectedItem);
-
 function generateTable(csvData) {
   const lines = csvData.split('\n');
   const table = document.createElement('table');
