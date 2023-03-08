@@ -36,6 +36,8 @@ function generateTable(csvData) {
       if (column_num == 2){
         td.onclick = event => onclickTd(data, event);  // => はアロー関数
         td.style.cursor = "pointer"
+        td.style.color = "blue"
+        td.style.textDecoration = "underline"
       }
       dataRow.appendChild(td);
       column_num += 1
