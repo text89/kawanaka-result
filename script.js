@@ -17,7 +17,7 @@ function generateTable(csvData) {
 
   // 表のヘッダを作成
   const headerRow = document.createElement('tr');
-  const headers = lines[0].split(',');
+  const headers = ["順位", "サーバー", "同盟", "合戦ポイント"];
   for (const header of headers) {
     const th = document.createElement('th');
     th.textContent = header;
@@ -61,10 +61,9 @@ function getSelectedItem() {
 }
 
 function onclickTd(data, event){
-  var display_text = "順位：" + data[0] + "\nサーバー：" + data[1] + "\n同盟名：" + data[2] + "\nポイント：" + data[3]
+  var display_text = "順位：" + data[0] + "\nサーバー：" + data[1] + "\n同盟：" + data[2] + "\nポイント：" + data[3]
   for (const res_data of result_data){
     if ((res_data["name"] == data[2]) && (res_data["server"] == data[1])){
-      // display_text += "\n"
       for (const res of res_data["result"]){
         display_text += "\n" + res["result"] + " [" + data[1] + "]" + data[2] + "(" + res["point"] + ")" + " vs [" + res["opp_server"]+ "]" + res["opp_name"] + "(" + res["opp_point"] + ")"
       }
