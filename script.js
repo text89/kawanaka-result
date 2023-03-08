@@ -65,7 +65,13 @@ function onclickTd(data, event){
   for (const res_data of result_data){
     if ((res_data["name"] == data[2]) && (res_data["server"] == data[1])){
       for (const res of res_data["result"]){
-        display_text += "\n" + res["result"] + " [" + data[1] + "]" + data[2] + "(" + res["point"] + ")" + " vs [" + res["opp_server"]+ "]" + res["opp_name"] + "(" + res["opp_point"] + ")"
+        var score = "-"
+        if (res["result"] == "o"){
+          score = "勝"
+        }else if (res["result"] == "x"){
+          score = "負"
+        }
+        display_text += "\n" + score + " (" + res["point"] + ")" + " vs [" + res["opp_server"]+ "]" + res["opp_name"] + "(" + res["opp_point"] + ")"
       }
     }
   }
