@@ -64,7 +64,7 @@ function onclickTd(data, event){
   for (const res_data of result_data){
     if ((res_data["name"] == data[2]) && (res_data["server"] == data[1])){
       for (const res of res_data["result"]){
-        var score = "-"
+        var score = "ー"
         if (res["result"] == "o"){
           score = "勝"
         }else if (res["result"] == "x"){
