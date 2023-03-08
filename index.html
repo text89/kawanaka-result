@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CSVファイルを読み込んで表示する</title>
+    <meta charset="UTF-8">
+    <style>
+      table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 5px;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>川中島の戦い阿修羅ランキング</h1>
+    <select id="myList">
+        <option value="0">第1回対戦前まで</option>
+        <option value="1">第2回対戦前まで</option>
+        <option value="2">第3回対戦前まで</option>
+        <option value="3", selected>第4回対戦前まで</option>
+    </select>
+      
+    <button onclick="getSelectedItem()">表示</button>
+    <br>
+    <br>
+    <div id="table-container"></div>
+    <script src="script.js"></script>
+  </body>
+</html>
