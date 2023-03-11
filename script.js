@@ -71,7 +71,7 @@ function onclickTd(data, event){
         }else if (res["res"] == "x"){
           score = "負"
         }
-        display_text += "\n" + "第" + i + "回 " + score + " (" + res["po"] + ")" + " vs [" + res["op_ser"]+ "]" + res["op_na"] + "(" + res["op_po"] + ")"
+        display_text += "\n" + "#" + i + " " + score + " (" + res["po"] + ")" + " vs [" + res["op_ser"]+ "]" + res["op_na"] + "(" + res["op_po"] + ")"
         i += 1;
       }
     }
