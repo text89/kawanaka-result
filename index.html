@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0JBDEE8787"></script>
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-0JBDEE8787"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
       gtag('config', 'G-0JBDEE8787');
-    </script>
+    </script> -->
     <title>Kawanaka Result</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -68,19 +68,19 @@
   <body>
     <h1>川中島の戦い<br>阿修羅ランキング</h1>
     <div class="another-ranking-link">
-      <p>阿修羅  ／  <a href="./tenkabito/index.html">天下人</a></p>
+      <p>阿修羅  ／  <a href="./tenkabito_s3/index.html">天下人</a></p>
     </div>
     <div id="input-box">
     <select id="time-list">
         <option value="0">第1回対戦前まで</option>
-        <option value="1">第2回対戦前まで</option>
-        <option value="2">第3回対戦前まで</option>
+        <option value="1", selected>第2回対戦前まで(推定)</option>
+        <!-- <option value="2">第3回対戦前まで</option>
         <option value="3">第4回対戦前まで</option>
         <option value="4">第5回対戦前まで</option>
         <option value="5">第6回対戦前まで</option>
         <option value="6">第7回対戦前まで</option>
         <option value="7">第8回対戦前まで</option>
-        <option value="8", selected>第9回対戦前まで(推定)</option>
+        <option value="8", selected>第9回対戦前まで(推定)</option> -->
     </select>
     <select id="server-list">
       <option value="0", selected>全て</option>
@@ -100,6 +100,7 @@
     <br>
     <div id="table-container"></div>
     <div id="form-link">お問い合わせはTwitter(<a href="https://twitter.com/text_89">@text_89</a>)まで</div>
+    <script src="result_table.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
