@@ -291,8 +291,8 @@ function displayTopPowers(data) {
         data.push(...csvData);
     }
     if (! data.length == 0){
-        var unionMemberPower = document.getElementById("union-member-power");
-        unionMemberPower.textContent = "総合力分布 (" + data[0]["date"] + '時点)';
+        var unionMemberPower = document.getElementById("union-member-power-date");
+        unionMemberPower.textContent = "(" + data[0]["date"] + '時点)';
         const powerData = document.getElementById("power-histogram");
         powerData.textContent = "";
         // createHistogram(data, d => +d.level, 1, "#level-histogram", levelMargin);
