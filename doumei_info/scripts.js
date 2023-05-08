@@ -242,7 +242,7 @@ function displayTopPowers(data) {
     const table = document.createElement('table');
 
     const headerRow = document.createElement('tr');
-    const headers = ["同盟内順位", "レベル", "総合力"];
+    const headers = ["同盟内順位", "レベル", "総合力(万)"];
     for (const header of headers) {
       const th = document.createElement('th');
       th.textContent = header;
@@ -292,7 +292,7 @@ function displayTopPowers(data) {
     }
     if (! data.length == 0){
         var unionMemberPower = document.getElementById("union-member-power");
-        unionMemberPower.textContent = "総合力 (" + data[0]["date"] + '時点)';
+        unionMemberPower.textContent = "総合力分布 (" + data[0]["date"] + '時点)';
         const powerData = document.getElementById("power-histogram");
         powerData.textContent = "";
         // createHistogram(data, d => +d.level, 1, "#level-histogram", levelMargin);
