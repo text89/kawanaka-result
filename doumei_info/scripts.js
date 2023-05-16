@@ -17,6 +17,8 @@ function searchUnion(server, name, season_list, season_id){
                     union_info["cls_" + season_id] = "tenkabito";
                 }else if(i==2){
                     union_info["cls_" + season_id] = "soudaisho";
+                }else if(i==3){
+                    union_info["cls_" + season_id] = "onimusha";
                 }
             }
         } 
@@ -68,11 +70,15 @@ function setResult(res_data, tableId){
         dataRow.appendChild(td);
         
         td = document.createElement('td');
-        td.textContent = "[" + res["op_ser"]+ "]" + res["op_na"] + "(" + res["op_po"] + ")";
-        td.onclick = event => onclickTd(res["op_ser"], res["op_na"], event);
-        td.style.cursor = "pointer"
-        td.style.color = "blue"
-        td.style.textDecoration = "underline"
+        if (res["op_ser"] == '*'){
+            td.textContent = "不戦勝";
+        }else {
+            td.textContent = "[" + res["op_ser"]+ "]" + res["op_na"] + "(" + res["op_po"] + ")";
+            td.onclick = event => onclickTd(res["op_ser"], res["op_na"], event);
+            td.style.cursor = "pointer"
+            td.style.color = "blue"
+            td.style.textDecoration = "underline"
+        }
         dataRow.appendChild(td);
 
         table.appendChild(dataRow);
@@ -99,6 +105,8 @@ function generateTable(unionInfo, seasonId) {
             csvData = tenkabito_s3_result_table[tenkabito_s3_result_table.length - 1];;
         }else if (unionInfo["cls_" + seasonId] == "soudaisho"){
             csvData = soudaisho_s3_result_table[soudaisho_s3_result_table.length - 1];;
+        }else if (unionInfo["cls_" + seasonId] == "onimusha"){
+            csvData = onimusha_s3_result_table[onimusha_s3_result_table.length - 1];;
         }else {
             return null;
         }
@@ -133,6 +141,8 @@ function generateTable(unionInfo, seasonId) {
             td.textContent = "天下人";
         }else if (unionInfo["cls_" + seasonId] == "soudaisho"){
             td.textContent = "総大将";
+        }else if (unionInfo["cls_" + seasonId] == "onimusha"){
+            td.textContent = "鬼武者";
         }
         dataRow.appendChild(td);
 
@@ -152,7 +162,36 @@ function generateTable(unionInfo, seasonId) {
         dataRow.appendChild(td);
         column_num += 1
       }
+      
       table.appendChild(dataRow);
+    }
+
+    if (table.children.length == 1){
+        const dataRow = document.createElement('tr');
+        let td = document.createElement('td')
+        if (unionInfo["cls_" + seasonId] == "ashura"){
+            td.textContent = "阿修羅";
+        }else if (unionInfo["cls_" + seasonId] == "tenkabito"){
+            td.textContent = "天下人";
+        }else if (unionInfo["cls_" + seasonId] == "soudaisho"){
+            td.textContent = "総大将";
+        }else if (unionInfo["cls_" + seasonId] == "onimusha"){
+            td.textContent = "鬼武者";
+        }
+        dataRow.appendChild(td);
+        td = document.createElement('td')
+        td.textContent = "無し"
+        dataRow.appendChild(td);
+        td = document.createElement('td')
+        td.textContent = unionInfo["ser"]
+        dataRow.appendChild(td);
+        td = document.createElement('td')
+        td.textContent = unionInfo["na"]
+        dataRow.appendChild(td);
+        td = document.createElement('td')
+        td.textContent = "無し"
+        dataRow.appendChild(td);
+        table.appendChild(dataRow);
     }
 
     var resultContainer = document.getElementById(seasonId + "-final-container");
@@ -187,7 +226,7 @@ if (Object.keys(unionInfo).length > 0){
     setResult(unionInfo, "s2-result-container");
 }
 
-season_list = [ashura_s3, tenkabito_s3, soudaisho_s3]
+season_list = [ashura_s3, tenkabito_s3, soudaisho_s3, onimusha_s3]
 unionInfo = searchUnion(converted_server, params['name'], season_list, "s3")
 if (Object.keys(unionInfo).length > 0){
     const resultData = document.getElementById("s3-final-container");
