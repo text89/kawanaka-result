@@ -308,7 +308,7 @@ function displayTopPowers(data) {
         const powerTd = document.createElement('td');
 
         rankTd.textContent = rank
-        levelTd.textContent = row.level;
+        levelTd.textContent = Math.floor(row.level);
         powerTd.textContent = row.power;
 
         rankTd.classList.add("rank-td");
