@@ -283,6 +283,79 @@ function createHistogram(data, accessor, binSize, element, margin) {
         .attr("height", d => y(0) - y(d.length));
 }
 
+function generateHistogram(data){
+    var ctx = document.getElementById('histogram').getContext('2d');
+
+    // Let's assume that you receive the following JSON object
+    // var jsonData = [
+    //     {"power": 50},
+    //     {"power": 120},
+    //     {"power": 200},
+    //     {"power": 80},
+    //     {"power": 300},
+    //     {"power": 400},
+    //     {"power": 120},
+    //     {"power": 60},
+    //     {"power": 700},
+    //     {"power": 90},
+    //     // add more data here
+    // ];
+    var jsonData = data;
+
+    // Create an array to store the frequency of the data
+    var dataFrequency = [];
+    var powerList = jsonData.map(function (p) {
+        return p.power;
+    });
+    var maxPower = Math.max.apply(null, powerList); // set the max power as you need
+    for(var i = 0; i <= maxPower; i += 50) {
+        dataFrequency[i/50] = 0;
+    }
+
+    // Count the frequency of the data
+    jsonData.forEach(function(obj) {
+        var power = obj.power;
+        if(power >= 0 && power <= maxPower) {
+            dataFrequency[Math.floor(power / 50)]++;
+        }
+    });
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: Array.from({length: (maxPower / 50) + 1}, (_, i) => i * 50),
+            datasets: [{
+                label: '人数',
+                data: dataFrequency,
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                x: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: '総合力'
+                    }
+                },
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: '人数'
+                    },
+                    ticks: {
+                        stepSize: 1
+                    }
+                }
+            }
+        }
+    });
+}
+
 function displayTopPowers(data) {
     const table = document.createElement('table');
 
@@ -338,10 +411,11 @@ function displayTopPowers(data) {
     if (! data.length == 0){
         var unionMemberPower = document.getElementById("union-member-power-date");
         unionMemberPower.textContent = "(" + data[0]["date"] + '時点)';
-        const powerData = document.getElementById("power-histogram");
+        const powerData = document.getElementById("power-histogram-label");
         powerData.textContent = "";
         // createHistogram(data, d => +d.level, 1, "#level-histogram", levelMargin);
-        createHistogram(data, d => +d.power, 50, "#power-histogram", powerMargin);
+        // createHistogram(data, d => +d.power, 50, "#power-histogram", powerMargin);
+        generateHistogram(data);
         displayTopPowers(data);
     }
 })();
