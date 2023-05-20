@@ -285,6 +285,7 @@ function createHistogram(data, accessor, binSize, element, margin) {
 
 function generateHistogram(data){
     var ctx = document.getElementById('histogram').getContext('2d');
+    ctx.canvas.height = 200;
 
     // Let's assume that you receive the following JSON object
     // var jsonData = [
@@ -351,7 +352,9 @@ function generateHistogram(data){
                         stepSize: 1
                     }
                 }
-            }
+            },
+            responsive: true,
+            // maintainAspectRatio: false
         }
     });
 }
