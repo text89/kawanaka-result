@@ -285,7 +285,7 @@ function createHistogram(data, accessor, binSize, element, margin) {
 
 function generateHistogram(data){
     var ctx = document.getElementById('histogram').getContext('2d');
-    ctx.canvas.height = 200;
+    // ctx.canvas.height = 200;
 
     // Let's assume that you receive the following JSON object
     // var jsonData = [
@@ -321,13 +321,21 @@ function generateHistogram(data){
         }
     });
 
+    var minX = 0
+    for (var i=0; i < dataFrequency.length; i++){
+        if (dataFrequency[i] > 0){
+            minX = i;
+            break
+        }
+    }
+
     new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: Array.from({length: (maxPower / 50) + 1}, (_, i) => i * 50),
+            labels: Array.from({length: ((maxPower / 50) + 1) - minX}, (_, i) => (i * 50) + minX * 50),
             datasets: [{
                 label: '人数',
-                data: dataFrequency,
+                data: dataFrequency.slice(minX, dataFrequency.length),
                 backgroundColor: 'rgba(75, 192, 192, 0.2)',
                 borderColor: 'rgba(75, 192, 192, 1)',
                 borderWidth: 1
@@ -336,16 +344,16 @@ function generateHistogram(data){
         options: {
             scales: {
                 x: {
-                    beginAtZero: true,
+                    beginAtZero: false,
                     title: {
-                        display: true,
+                        display: false,
                         text: '総合力'
                     }
                 },
                 y: {
                     beginAtZero: true,
                     title: {
-                        display: true,
+                        display: false,
                         text: '人数'
                     },
                     ticks: {
