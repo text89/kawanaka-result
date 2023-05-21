@@ -1,4 +1,5 @@
 .DS_Store
+.gitignore
 doumei_info/unions/s1
 doumei_info/unions/s2
 doumei_info/unions/s3
