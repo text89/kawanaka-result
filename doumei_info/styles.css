@@ -43,7 +43,7 @@ h2 {
     text-align: center;
 }
 
-#union-member-power-date {
+#union-member-power-date, #union-member-level-date {
     margin-top: 0px;
     font-size: large;
 }

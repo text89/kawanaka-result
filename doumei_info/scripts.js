@@ -284,7 +284,8 @@ function createHistogram(data, accessor, binSize, element, margin) {
 }
 
 function generateHistogram(data){
-    var ctx = document.getElementById('histogram').getContext('2d');
+    var ctxLevel = document.getElementById('histogram-level').getContext('2d');
+    var ctx = document.getElementById('histogram-power').getContext('2d');
     // ctx.canvas.height = 200;
 
     // Let's assume that you receive the following JSON object
@@ -305,19 +306,31 @@ function generateHistogram(data){
 
     // Create an array to store the frequency of the data
     var dataFrequency = [];
+    var dataFrequencyLevel = [];
     var powerList = jsonData.map(function (p) {
         return p.power;
     });
+    var levelList = jsonData.map(function (p) {
+        return p.level;
+    });
     var maxPower = Math.max.apply(null, powerList); // set the max power as you need
+    var maxLevel= Math.max.apply(null, levelList); // set the max level as you need
     for(var i = 0; i <= maxPower; i += 50) {
         dataFrequency[i/50] = 0;
+    }
+    for(var i = 0; i <= maxLevel; i += 1) {
+        dataFrequencyLevel[i] = 0;
     }
 
     // Count the frequency of the data
     jsonData.forEach(function(obj) {
         var power = obj.power;
+        var level = obj.level;
         if(power >= 0 && power <= maxPower) {
             dataFrequency[Math.floor(power / 50)]++;
+        }
+        if(level >= 0 && level <= maxLevel) {
+            dataFrequencyLevel[level]++;
         }
     });
 
@@ -325,6 +338,13 @@ function generateHistogram(data){
     for (var i=0; i < dataFrequency.length; i++){
         if (dataFrequency[i] > 0){
             minX = i;
+            break
+        }
+    }
+    var minXLevel = 0
+    for (var i=0; i < dataFrequencyLevel.length; i++){
+        if (dataFrequencyLevel[i] > 0){
+            minXLevel = i;
             break
         }
     }
@@ -348,6 +368,43 @@ function generateHistogram(data){
                     title: {
                         display: false,
                         text: '総合力'
+                    }
+                },
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: false,
+                        text: '人数'
+                    },
+                    ticks: {
+                        stepSize: 1
+                    }
+                }
+            },
+            responsive: true,
+            // maintainAspectRatio: false
+        }
+    });
+
+    new Chart(ctxLevel, {
+        type: 'bar',
+        data: {
+            labels: Array.from({length: ((maxLevel) + 1) - minXLevel}, (_, i) => (i + minXLevel)),
+            datasets: [{
+                label: '人数',
+                data: dataFrequencyLevel.slice(minXLevel, dataFrequencyLevel.length),
+                backgroundColor: 'rgba(192, 75, 192, 0.2)',
+                borderColor: 'rgba(192, 75, 192, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                x: {
+                    beginAtZero: false,
+                    title: {
+                        display: false,
+                        text: '天守レベル'
                     }
                 },
                 y: {
@@ -422,8 +479,12 @@ function displayTopPowers(data) {
     if (! data.length == 0){
         var unionMemberPower = document.getElementById("union-member-power-date");
         unionMemberPower.textContent = "(" + data[0]["date"] + '時点)';
+        var unionMemberLevel = document.getElementById("union-member-level-date");
+        unionMemberLevel.textContent = "(" + data[0]["date"] + '時点)';
         const powerData = document.getElementById("power-histogram-label");
         powerData.textContent = "";
+        const levelData = document.getElementById("level-histogram-label");
+        levelData.textContent = "";
         // createHistogram(data, d => +d.level, 1, "#level-histogram", levelMargin);
         // createHistogram(data, d => +d.power, 50, "#power-histogram", powerMargin);
         generateHistogram(data);
