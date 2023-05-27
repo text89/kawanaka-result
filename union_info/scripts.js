@@ -19,6 +19,8 @@ function searchUnion(server, name, season_list, season_id){
                     union_info["cls_" + season_id] = "soudaisho";
                 }else if(i==3){
                     union_info["cls_" + season_id] = "onimusha";
+                }else if(i==4){
+                    union_info["cls_" + season_id] = "aramusha";
                 }
             }
         } 
@@ -233,7 +235,7 @@ if (Object.keys(unionInfo).length > 0){
     setResult(unionInfo, "s2-result-container");
 }
 
-season_list = [ashura_s3, tenkabito_s3, soudaisho_s3, onimusha_s3]
+season_list = [ashura_s3, tenkabito_s3, soudaisho_s3, onimusha_s3, aramusha_s3]
 unionInfo = searchUnion(converted_server, params['name'], season_list, "s3")
 if (Object.keys(unionInfo).length > 0){
     const resultData = document.getElementById("s3-final-container");
