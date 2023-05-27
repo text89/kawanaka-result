@@ -29,7 +29,7 @@ function searchUnion(server, name, season_list, season_id){
 }
 function onclickTd(server, name, event){
     var params = "?server=" + server + "&name=" + name;
-    location.href = "../doumei_info/index.html" + params;
+    location.href = "../union_info/index.html" + params;
 }
 
 function setResult(res_data, tableId){
