@@ -1,0 +1,89 @@
+.button-link {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: bold;
+    color: #fff;
+    
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+
+    margin-left: 10px;
+
+}
+
+.button-link-thin {
+    display: inline-block;
+    padding: 0px 20px;
+    font-size: 16px;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: bold;
+    color: #fff;
+    
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+
+    margin-left: 10px;
+}
+.ashura-button {
+    background-color: #AF4C50;
+}
+.ashura-button:hover {
+    background-color: #FFdddd;
+    color: #AF4C50;
+}
+.tenkabito-button {
+    background-color: #dd8520;
+}
+.tenkabito-button:hover {
+    background-color: #FFddaa;
+    color: #dd8520;
+}
+.soudaisho-button {
+    background-color: #4CAF50;
+}
+.soudaisho-button:hover {
+    background-color: #ccffcc;
+    color: #4CAF50;
+}
+.onimusha-button {
+    background-color: #ba55d3;
+}
+
+.onimusha-button:hover {
+    background-color: #ffccff;
+    color: #ba55d3;
+}
+
+.server-button-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    
+}
+
+.server-button {
+    display: inline-block;
+    width: 64px;
+    margin: 5px;
+    padding: 10px 10px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: #118cFF;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.server-button:hover {
+    background-color: #0056b3;
+    color: #fff;
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <title>新信長の野望 サーバー別同盟情報</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        div.another-ranking-link {
+          text-align: center;
+          margin-top: 16px;
+      }
+      h1 {
+        padding-top: 16px;
+        padding-bottom: 8px;
+        text-align: center;
+      }
+      
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        margin-bottom: 16px;
+      }
+
+      th, td {
+        text-align: left;
+        padding: 8px;
+        border-bottom: 1px solid #ddd;
+      }
+
+      th {
+        background-color: #555566;
+        color: white;
+      }
+
+      @media screen and (max-width: 600px) {
+        td {
+          font-size: 18px;
+        }
+      }
+
+      @media screen and (max-width: 400px) {
+        td {
+          font-size: 16px;
+        }
+      }
+
+      tr.row-ashura {
+        background-color: #FFdddd;
+      }
+
+      tr.row-tenkabito {
+        background-color: #ffeeaa;
+      }
+
+      tr.row-soudaisho {
+        background-color: #ddffdd;
+      }
+
+      tr.row-onimusha {
+        background-color: #ffddff;
+      }
+      
+    </style>
+    <link rel="stylesheet" href="../css/button.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="another-ranking-link">
+        <p><a href="../index.html" >トップページへ戻る</a> </p>
+    </div>
+    <h1>川中島の戦い シーズン3<br>
+    <div id="server-name"></div>
+    </h1>
+    <div id="table-container"></div>
+    
+    <script src="../s3_ashura/result_table.js"></script>
+    <script src="../s3_tenkabito/result_table.js"></script>
+    <script src="../s3_soudaisho/result_table.js"></script>
+    <script src="../s3_onimusha/result_table.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

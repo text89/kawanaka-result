@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>同盟情報</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../css/button.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="result">
+        <p><a href="../index.html" >トップページへ戻る</a> </p>
+        
+        <h1 id="union-name"></h1>
+        <h2>シーズン3予選結果</h2>
+        <div id="s3-final-container">データ無し</div>
+        <div id="s3-result-container"></div>
+        <h2>シーズン2予選結果</h2>
+        <div id="s2-final-container">データ無し</div>
+        <div id="s2-result-container"></div>
+    </div>
+    <div class="container">
+        <p>
+        <h2 id="union-member-power">天守レベル分布<div id="union-member-level-date"></div></h2>
+        </p>
+        <div id="level-histogram-label">データ無し</div>
+        <canvas id="histogram-level"></canvas>
+        <p>
+        <h2 id="union-member-power">総合力分布<div id="union-member-power-date"></div></h2>
+        </p>
+        <div id="power-histogram-label">データ無し</div>
+        <canvas id="histogram-power"></canvas>
+        <div id="top-powers-container"></div>
+    </div>
+    
+        
+    </div>
+    <script src="../s2_tenkabito/doumei_info.js"></script>
+    <script src="../s2_ashura/doumei_info.js"></script>
+
+    <script src="../s2_tenkabito/result_table.js"></script>
+    <script src="../s2_ashura/result_table.js"></script>
+
+    <script src="../s3_onimusha/doumei_info.js"></script>
+    <script src="../s3_soudaisho/doumei_info.js"></script>
+    <script src="../s3_tenkabito/doumei_info.js"></script>
+    <script src="../s3_ashura/doumei_info.js"></script>
+
+    <script src="../s3_onimusha/result_table.js"></script>
+    <script src="../s3_soudaisho/result_table.js"></script>
+    <script src="../s3_tenkabito/result_table.js"></script>
+    <script src="../s3_ashura/result_table.js"></script>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
+
