@@ -18,6 +18,7 @@ function generateTable(server_id) {
     const tenkabitoTable = tenkabito_s3_result_table;
     const soudaishoTable = soudaisho_s3_result_table;
     const onimushaTable = onimusha_s3_result_table;
+    const aramushaTable = aramusha_s3_result_table;
     
     var _table = document.createElement('table');
   
@@ -38,6 +39,7 @@ function generateTable(server_id) {
     _table = appendRows(_table, tenkabitoTable[tenkabitoTable.length-1], server_id, '天下人');
     _table = appendRows(_table, soudaishoTable[soudaishoTable.length-1], server_id, '総大将');
     _table = appendRows(_table, onimushaTable[onimushaTable.length-1], server_id, '鬼武者');
+    _table = appendRows(_table, aramushaTable[aramushaTable.length-1], server_id, '荒武者');
     
     return _table;
   }
@@ -56,6 +58,8 @@ function generateTable(server_id) {
             dataRow.classList.add("row-soudaisho");
         }else if (classStr == '鬼武者'){
             dataRow.classList.add("row-onimusha");
+        }else if (classStr == '荒武者'){
+            dataRow.classList.add("row-aramusha");
         }
 
         const data = lines[i].split(',');

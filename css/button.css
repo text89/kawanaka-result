@@ -62,6 +62,13 @@
     background-color: #ffccff;
     color: #ba55d3;
 }
+.aramusha-button {
+    background-color: #335fe1;
+}
+.aramusha-button:hover {
+    background-color: #ccccff;
+    color: #335fe1;
+}
 
 .server-button-container {
     display: flex;

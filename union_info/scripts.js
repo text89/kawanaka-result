@@ -107,6 +107,8 @@ function generateTable(unionInfo, seasonId) {
             csvData = soudaisho_s3_result_table[soudaisho_s3_result_table.length - 1];;
         }else if (unionInfo["cls_" + seasonId] == "onimusha"){
             csvData = onimusha_s3_result_table[onimusha_s3_result_table.length - 1];;
+        }else if (unionInfo["cls_" + seasonId] == "aramusha"){
+            csvData = aramusha_s3_result_table[aramusha_s3_result_table.length - 1];;
         }else {
             return null;
         }
@@ -143,6 +145,8 @@ function generateTable(unionInfo, seasonId) {
             td.textContent = "総大将";
         }else if (unionInfo["cls_" + seasonId] == "onimusha"){
             td.textContent = "鬼武者";
+        }else if (unionInfo["cls_" + seasonId] == "aramusha"){
+            td.textContent = "荒武者";
         }
         dataRow.appendChild(td);
 
@@ -177,7 +181,10 @@ function generateTable(unionInfo, seasonId) {
             td.textContent = "総大将";
         }else if (unionInfo["cls_" + seasonId] == "onimusha"){
             td.textContent = "鬼武者";
+        }else if (unionInfo["cls_" + seasonId] == "aramusha"){
+            td.textContent = "荒武者";
         }
+
         dataRow.appendChild(td);
         td = document.createElement('td')
         td.textContent = "無し"

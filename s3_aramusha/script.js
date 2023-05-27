@@ -1,6 +1,6 @@
 const tableContainer = document.getElementById('table-container');
 
-const text = ashura_s3_result_table;
+const text = aramusha_s3_result_table;
 
 const table = generateTable(text[text.length-1], 0);
 tableContainer.innerHTML = '';
