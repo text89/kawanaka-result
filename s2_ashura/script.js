@@ -10,7 +10,7 @@ function generateTable(csvData, server_id) {
 
   // 表のヘッダを作成
   const headerRow = document.createElement('tr');
-  const headers = ["順位", "サーバー", "同盟", "合戦ポイント"];
+  const headers = ["順位", "サーバー", "同盟", "合戦PT"];
   for (const header of headers) {
     const th = document.createElement('th');
     th.textContent = header;

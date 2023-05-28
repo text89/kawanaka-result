@@ -24,13 +24,10 @@ function generateTable(server_id) {
   
     // 表のヘッダを作成
     const headerRow = document.createElement('tr');
-    const headers = ["階級", "順位", "サーバー", "同盟", "合戦ポイント"];
+    const headers = ["階級", "順位", "同盟", "合戦PT"];
     for (const header of headers) {
       const th = document.createElement('th');
       th.textContent = header;
-      if (header == "サーバー"){
-        th.onclick = event => onclickServer(event);  // => はアロー関数
-      }
       headerRow.appendChild(th);
     }
     _table.appendChild(headerRow);
@@ -65,25 +62,28 @@ function generateTable(server_id) {
         const data = lines[i].split(',');
         const doumei_server_id = data[1]
         if (!(server_id == 0 || doumei_server_id == ("S" + server_id))){continue};
-        column_num = 0
+        
 
         const td_first = document.createElement('td');
         td_first.textContent = classStr;
         dataRow.appendChild(td_first);
 
+        var column_num = 0
         for (const value of data) {
+            if (column_num == 1){
+                column_num += 1;
+                continue;
+            }
             const td = document.createElement('td');
-
-            
-          td.textContent = value;
-          if (column_num == 2){
-            td.onclick = event => onclickTd(data, event);
-            td.style.cursor = "pointer"
-            td.style.color = "blue"
-            td.style.textDecoration = "underline"
-          }
-          dataRow.appendChild(td);
-          column_num += 1
+            td.textContent = value;
+            if (column_num == 2){
+                td.onclick = event => onclickTd(data, event);
+                td.style.cursor = "pointer"
+                td.style.color = "blue"
+                td.style.textDecoration = "underline"
+            }
+            dataRow.appendChild(td);
+            column_num += 1
         }
         table.appendChild(dataRow);
     }
