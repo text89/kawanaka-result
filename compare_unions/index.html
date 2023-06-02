@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-0JBDEE8787"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-0JBDEE8787');
+    </script> -->
+    <title>同盟比較</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+    </head>
+    <body>
+        <h2>同盟比較</h2>
+
+        <div id="container" class="container">
+            <div class="select-box-set">
+                <select id="selectA" class="select-box" onchange="populateB()">
+                </select>
+            
+                <select id="selectB" class="select-box">
+                </select>
+            </div>
+            <div class="select-box-set">
+                <select id="selectC" class="select-box" onchange="populateD()">
+                </select>
+            
+                <select id="selectD" class="select-box">
+                </select>
+            </div>
+            <button id="button-compare" onclick="compareClick()">比較</button>
+        </div>
+        
+        <!-- <div class="button-container">
+            <button class="button" onclick="addRow()">行を追加</button>
+            <button class="button" onclick="removeRow()">行を削除</button>
+        </div> -->
+
+        <table id="compare-table">
+            
+        </table>
+        
+        <div id="chart-container">
+            <canvas id="canvas"></canvas>
+        </div>
+        <script src="../union_info/union_list.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>

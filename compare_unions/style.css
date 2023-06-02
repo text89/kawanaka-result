@@ -1,0 +1,54 @@
+div#container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+#button-compare {
+    margin: auto;
+}
+
+.button {
+    margin: 0 5px;
+    padding: 5px 10px;
+}
+
+.select-box {
+    margin: 0 10px;
+}
+
+h2 {
+    text-align: center;
+}
+
+table {
+    border-collapse: collapse;
+    /* width: 80%; */
+    margin-top: 20px;
+    margin:auto;
+}
+
+th, td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+#chart-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+    margin-left: 10%;
+    margin-right: 10%;
+}

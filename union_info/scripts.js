@@ -1,5 +1,5 @@
 
-function getUnionData(server, name){
+function getUnionPath(server, name){
     path = "./unions/s" + server.split("S")[1] + "/" + name + ".csv"
     return path
 }
@@ -225,7 +225,7 @@ if (concatServers.indexOf(_server_id) !== -1) {
 }
 unionName.textContent = converted_server + " " + params['name'];
 
-csvFilePath = getUnionData(params['server'], params['name'])
+csvFilePath = getUnionPath(params['server'], params['name'])
 var season_list = [ashura_s2, tenkabito_s2]
 unionInfo = searchUnion(params['server'], params['name'], season_list, "s2")
 if (Object.keys(unionInfo).length > 0){
