@@ -1,6 +1,5 @@
 function getUnionPath(server, name){
     path = "../union_info/unions/s" + server.split("S")[1] + "/" + name + ".csv";
-    console.log(path);
     return path
 }
 
@@ -28,9 +27,6 @@ function readUnionData(path){
         // generateHistogram(data);
         // displayTopPowers(data);
     }
-
-    console.log(average(csvData['power'].slice(0,10)));
-    console.log(average(csvData['power'].slice(0,50)));
     
 }
 
@@ -63,6 +59,11 @@ function _readUnionData(union_list){
                 level_list[i].push(Number(data['level']));
                 power_list[i].push(Number(data['power']));
             }
+            level_list[i].sort(function(a,b){
+                if( Number(a) > Number(b) ) return -1;
+                if( Number(a) < Number(b) ) return 1;
+                return 0;
+            });
             power_list[i].sort(function(a,b){
                 if( Number(a) > Number(b) ) return -1;
                 if( Number(a) < Number(b) ) return 1;
@@ -118,6 +119,43 @@ function _readUnionData(union_list){
                 data: power_list[i]
             })
         }
+        var datasetListLevel = [];
+        for (var i=0; i<union_list.length; i++){
+            datasetListLevel.push({
+                label: "[" + union_list[i]['server'] + "] " + union_list[i]['name'],
+                borderColor: colors[i%5],
+                data: level_list[i]
+            })
+        }
+
+        var ctxLevel = document.getElementById('canvas-level').getContext('2d');
+        if (chartLevel){
+            chartLevel.destroy();
+        }
+        
+        chartLevel = new Chart(ctxLevel, {
+            type: 'line',
+            data: {
+                labels: Array.from({length: maxLength}, (_, i) => i + 1),
+                datasets: datasetListLevel
+            },
+            options: {
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: '同盟内順位' // ここにX軸のラベル名を入力してください
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: '天守レベル' // ここにY軸のラベル名を入力してください
+                        }
+                    }
+                }
+            }
+        });
 
         var ctx = document.getElementById('canvas').getContext('2d');
         if (chart){
@@ -246,7 +284,6 @@ populateB(unions_in_list);
 
 // let selectAQuery = document.querySelector('[id="selectA"]');
 selectA.onchange = event => { 
-    console.log(selectA.selectedIndex);
     // Populate 'b' dropdown for the initial 'a' value
     populateB(unions_in_list);  
 }
@@ -267,21 +304,19 @@ populateD(unions_in_list);
 
 // select = document.querySelector('[id="selectC"]');
 selectC.onchange = event => { 
-    console.log(selectC.selectedIndex);
     // Populate 'b' dropdown for the initial 'a' value
     populateD(unions_in_list);  
 }
 
-console.log(selectA.options[selectA.selectedIndex].textContent)
 var union1 = {'server': "S" + selectA.options[selectA.selectedIndex].textContent.split('s')[1], 'name': selectB.options[selectB.selectedIndex].textContent};
 var union2 = {'server': "S" + selectC.options[selectC.selectedIndex].textContent.split('s')[1], 'name': selectD.options[selectD.selectedIndex].textContent};
 var unionList = [union1, union2]
 
 var chart = ""
+var chartLevel = ""
 _readUnionData(unionList);
 
 function compareClick(){
-    console.log(selectA.options[selectA.selectedIndex].textContent)
     var union1 = {'server': "S" + selectA.options[selectA.selectedIndex].textContent.split('s')[1], 'name': selectB.options[selectB.selectedIndex].textContent};
     var union2 = {'server': "S" + selectC.options[selectC.selectedIndex].textContent.split('s')[1], 'name': selectD.options[selectD.selectedIndex].textContent};
 
