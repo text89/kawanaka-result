@@ -83,6 +83,12 @@
     </div>
     <div id="form-link">お問い合わせはTwitter(<a href="https://twitter.com/text_89">@text_89</a>)まで</div>
     <script>
+
+        function onClick(server, name){
+            var params = "?server=" + server + "&name=" + name;
+            location.href = "../union_info/index.html" + params;
+        }
+        
         var table = document.getElementById('myTable');
         var unions = [
             {'server': 'S11', 'name': 'しす派'}, {'server':'S2', 'name':'かるだの'}, 
@@ -100,18 +106,18 @@
         for (var i = 0; i < 16; i++) {
             var row = table.insertRow(i+1);
             var cell1 = row.insertCell(0);
-            cell1.innerHTML = (i+1) + "位 [" + unions[i]['server'] + "] " + unions[i]['name'];
+            cell1.innerHTML = (i+1) + "位 " + '<a href="../union_info/index.html?server=' + unions[i]['server'] + "&name=" + unions[i]['name'] + '">[' + unions[i]['server'] + "] " + unions[i]['name'] + "</a>";
             for (var j = 0; j < 4; j++) {
                 var cell = row.insertCell(j+1);
                 if (opp[j][i] >= 0){
                     if (result[j][i] == 1){
-                        cell.innerHTML = "勝 [" + unions[opp[j][i]]['server'] + "] " + unions[opp[j][i]]['name'];
+                        cell.innerHTML = "勝 " + '<a href="../union_info/index.html?server=' + unions[opp[j][i]]['server'] + "&name=" + unions[opp[j][i]]['name'] + '">[' + unions[opp[j][i]]['server'] + "] " + unions[opp[j][i]]['name'] + "</a>";
                         cell.style.cssText = "background-color: #ffe0eb"
                     }else if (result[j][i] == 0) {
-                        cell.innerHTML = "敗 [" + unions[opp[j][i]]['server'] + "] " + unions[opp[j][i]]['name'];
+                        cell.innerHTML = "敗 " + '<a href="../union_info/index.html?server=' + unions[opp[j][i]]['server'] + "&name=" + unions[opp[j][i]]['name'] + '">[' + unions[opp[j][i]]['server'] + "] " + unions[opp[j][i]]['name'] + "</a>";
                         cell.style.cssText = "background-color: #e0ebff"
                     }else {
-                        cell.innerHTML = "（―）[" + unions[opp[j][i]]['server'] + "] " + unions[opp[j][i]]['name'];
+                        cell.innerHTML = '<a href="../union_info/index.html?server=' + unions[opp[j][i]]['server'] + "&name=" + unions[opp[j][i]]['name'] + '">[' + unions[opp[j][i]]['server'] + "] " + unions[opp[j][i]]['name'] + "</a>";
                     }
                 }else{
 
