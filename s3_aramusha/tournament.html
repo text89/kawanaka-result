@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .center {
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            width: 80%;
+            overflow: auto;
+        }
+        table {
+            border-collapse: collapse;
+            margin: 24px;
+            width: 100%;
+            
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            padding-left: 16px;
+            padding-right: 16px;
+            text-align: left;
+            white-space: nowrap;
+        }
+        th {
+            background-color: #335fe1;
+            color: white;
+        }
+        h2 {
+            text-align: center;
+        }
+        p {
+            text-align: center;
+            padding-top: 16px;
+        }
+        div#form-link {
+            margin-bottom: 16px;
+            text-align: center;
+        }
+    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+<body>
+    
+    <p><a href="../index.html" >トップページへ戻る</a></p>
+    <h2>川中島の戦い シーズン3<br>総大将勝ち抜き戦</h2>
+
+    <div class="center">
+        <table id="myTable">
+            <tr>
+                <th>予選順位 同盟</th>
+                <th>1戦目</th>
+                <th>2戦目</th>
+                <th>3戦目</th>
+                <th>4戦目</th>
+            </tr>
+        </table>
+    </div>
+    <div id="form-link">お問い合わせはTwitter(<a href="https://twitter.com/text_89">@text_89</a>)まで</div>
+
+    <script>
+        var table = document.getElementById('myTable');
+        var unions = [
+            {'server':'S59', 'name':'関東王将'}, // 0
+            {'server':'S59', 'name':'三草二木'}, // 1
+            {'server':'S46', 'name':'パッパ'}, // 2
+            {'server':'S55', 'name':'のらりくらり'}, // 3
+            {'server':'S59', 'name':'隣の天使様'}, // 4
+            {'server':'S48', 'name':'鴻鵠の志'}, // 5
+            {'server':'S52', 'name':'喫茶安土'}, // 6
+            {'server':'S59', 'name':'闘源郷'}, // 7
+            {'server':'S59', 'name':'協心戮力'}, // 8
+            {'server':'S57', 'name':'天元突破'}, // 9
+            {'server':'S49', 'name':'飛竜蒼天'}, // 10
+            {'server':'S57', 'name':'牛宮城'},// 11
+            {'server':'S58', 'name':'桜'}, // 12
+            {'server':'S58', 'name':'ミルフィーユ'}, // 13
+            {'server':'S52', 'name':'麒麟乃翼'}, // 14
+            {'server':'S56', 'name':'猛牛団'} // 15
+        ]
+        
+        var opp = [[15,14,13,12,11,10,9,8,7,6,5,4,3,2,1,0], [7,6,5,11,12,2,1,0,15,14,13,3,4,10,9,8], [], []] 
+        var result = [[1,1,1,0,1,1,1,1,0,0,0,0,1,0,0,0], [], [], []] 
+
+        for (var i = 0; i < 16; i++) {
+            var row = table.insertRow(i+1);
+            var cell1 = row.insertCell(0);
+            cell1.innerHTML = (i+1) + "位 [" + unions[i]['server'] + "] " + unions[i]['name'];
+            for (var j = 0; j < 4; j++) {
+                var cell = row.insertCell(j+1);
+                if (opp[j][i] >= 0){
+                    if (result[j][i] == 1){
+                        cell.innerHTML = "勝 [" + unions[opp[j][i]]['server'] + "] " + unions[opp[j][i]]['name'];
+                        cell.style.cssText = "background-color: #ffe0eb"
+                    }else if (result[j][i] == 0) {
+                        cell.innerHTML = "敗 [" + unions[opp[j][i]]['server'] + "] " + unions[opp[j][i]]['name'];
+                        cell.style.cssText = "background-color: #e0ebff"
+                    }else {
+                        cell.innerHTML = "[" + unions[opp[j][i]]['server'] + "] " + unions[opp[j][i]]['name'];
+                    }
+                }else{
+
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>
