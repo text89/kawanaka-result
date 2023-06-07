@@ -14,8 +14,8 @@
         }
         @media screen and (max-width: 600px) {
             .center {
-                margin-left: auto;
-                margin-right: auto;
+                /* margin-left: auto;
+                margin-right: auto; */
                 text-align: center;
                 width: 100%;
                 overflow: auto;
@@ -68,12 +68,12 @@
 <body>
     
     <p><a href="../index.html" >トップページへ戻る</a></p>
-    <h2>川中島の戦い シーズン3<br>阿修羅勝ち抜き戦</h2>
+    <h2>川中島の戦い シーズン3<br>阿修羅 勝ち抜き戦</h2>
 
     <div class="center">
         <table id="myTable">
             <tr>
-                <th>予選順位 同盟</th>
+                <th>同盟 (予選順位)</th>
                 <th>1戦目</th>
                 <th>2戦目</th>
                 <th>3戦目</th>
@@ -84,40 +84,64 @@
     <div id="form-link">お問い合わせはTwitter(<a href="https://twitter.com/text_89">@text_89</a>)まで</div>
     <script>
 
-        function onClick(server, name){
-            var params = "?server=" + server + "&name=" + name;
-            location.href = "../union_info/index.html" + params;
+        function getIndexArray(arr) {
+            const indexedArray = arr.map((value, index) => [value, index]);
+            indexedArray.sort((a, b) => b[0] - a[0]);
+            return indexedArray.map((pair) => pair[1]);
         }
         
         var table = document.getElementById('myTable');
         var unions = [
-            {'server': 'S11', 'name': 'しす派'}, {'server':'S2', 'name':'かるだの'}, 
-            {'server':'S3', 'name':'姫桜'}, {'server':'S9', 'name':'傾奇者'}, 
-            {'server':'S4', 'name':'涼風一陣'}, {'server':'S8', 'name':'おつかべ同盟'}, 
-            {'server':'S13', 'name':'孤軍奮闘'}, {'server':'S7', 'name':'風林火山'}, 
-            {'server':'S27', 'name':'戦国の花'}, {'server':'S41', 'name':'桃源郷'}, 
-            {'server':'S43', 'name':'殺罰'}, {'server':'S25', 'name':'天上天下'}, 
-            {'server':'S17', 'name':'赤兎馬'}, {'server':'S33', 'name':'九州探題'}, 
-            {'server':'S10', 'name':'威風堂々'}, {'server':'S6', 'name':'鬼ヶ島'}]
+            {'server': 'S11', 'name': 'しす派', 'elim_rank': 1}, 
+            {'server':'S2', 'name':'かるだの', 'elim_rank': 2}, 
+            {'server':'S3', 'name':'姫桜', 'elim_rank': 3}, 
+            {'server':'S9', 'name':'傾奇者', 'elim_rank': 4}, 
+            {'server':'S4', 'name':'涼風一陣', 'elim_rank': 5}, 
+            {'server':'S8', 'name':'おつかべ同盟', 'elim_rank': 6}, 
+            {'server':'S13', 'name':'孤軍奮闘', 'elim_rank': 7}, 
+            {'server':'S7', 'name':'風林火山', 'elim_rank': 8}, 
+            {'server':'S27', 'name':'戦国の花', 'elim_rank': 9}, 
+            {'server':'S41', 'name':'桃源郷', 'elim_rank': 10}, 
+            {'server':'S43', 'name':'殺罰', 'elim_rank': 11}, 
+            {'server':'S25', 'name':'天上天下', 'elim_rank': 12}, 
+            {'server':'S17', 'name':'赤兎馬', 'elim_rank': 13}, 
+            {'server':'S33', 'name':'九州探題', 'elim_rank': 14}, 
+            {'server':'S10', 'name':'威風堂々', 'elim_rank': 15}, 
+            {'server':'S6', 'name':'鬼ヶ島', 'elim_rank': 16}]
         
-        var opp = [[15,14,13,12,11,10,9,8,7,6,5,4,3,2,1,0], [7,6,5,4,3,2,1,0,15,14,13,12,11,10,9,8], [], []] 
-        var result = [[1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0], [], [], []] 
+        var opp = [[15,14,13,12,11,10,9,8,7,6,5,4,3,2,1,0], [7,6,5,4,3,2,1,0,15,14,13,12,11,10,9,8], [], []];
+        var result = [[1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0], [], [], []];
+
+        var tmp_point = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+        for (var i=0; i<16; i++) {
+            for (var j=0; j<4; j++){
+                if (result[j][i] >= 0){
+                    tmp_point[i] += (10 ** (5-j)) * result[j][i];
+                }
+            }
+        }
+        var ranks = getIndexArray(tmp_point);
 
         for (var i = 0; i < 16; i++) {
+            var rank = ranks[i]
             var row = table.insertRow(i+1);
             var cell1 = row.insertCell(0);
-            cell1.innerHTML = (i+1) + "位 " + '<a href="../union_info/index.html?server=' + unions[i]['server'] + "&name=" + unions[i]['name'] + '">[' + unions[i]['server'] + "] " + unions[i]['name'] + "</a>";
+
+            cell1.innerHTML = '<a href="../union_info/index.html?server=' + unions[rank]['server'] + "&name=" + unions[rank]['name'] + '">[' + unions[rank]['server'] + "] " + unions[rank]['name'] + "</a>" + " (" + unions[rank]['elim_rank'] + ")";
             for (var j = 0; j < 4; j++) {
                 var cell = row.insertCell(j+1);
-                if (opp[j][i] >= 0){
-                    if (result[j][i] == 1){
-                        cell.innerHTML = "勝 " + '<a href="../union_info/index.html?server=' + unions[opp[j][i]]['server'] + "&name=" + unions[opp[j][i]]['name'] + '">[' + unions[opp[j][i]]['server'] + "] " + unions[opp[j][i]]['name'] + "</a>";
+                
+                if (opp[j][rank] >= 0){
+                    var opp_union = unions[opp[j][rank]];
+                var opp_union_html = '<a href="../union_info/index.html?server=' + opp_union['server'] + "&name=" + opp_union['name'] + '">[' + opp_union['server'] + "] " + opp_union['name'] + "</a>" + " (" + opp_union['elim_rank'] + ")";
+                    if (result[j][rank] == 1){
+                        cell.innerHTML = "勝 " + opp_union_html;
                         cell.style.cssText = "background-color: #ffe0eb"
-                    }else if (result[j][i] == 0) {
-                        cell.innerHTML = "敗 " + '<a href="../union_info/index.html?server=' + unions[opp[j][i]]['server'] + "&name=" + unions[opp[j][i]]['name'] + '">[' + unions[opp[j][i]]['server'] + "] " + unions[opp[j][i]]['name'] + "</a>";
+                    }else if (result[j][rank] == 0) {
+                        cell.innerHTML = "敗 " + opp_union_html;
                         cell.style.cssText = "background-color: #e0ebff"
                     }else {
-                        cell.innerHTML = '<a href="../union_info/index.html?server=' + unions[opp[j][i]]['server'] + "&name=" + unions[opp[j][i]]['name'] + '">[' + unions[opp[j][i]]['server'] + "] " + unions[opp[j][i]]['name'] + "</a>";
+                        cell.innerHTML = opp_union_html;
                     }
                 }else{
 

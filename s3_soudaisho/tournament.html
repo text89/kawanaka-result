@@ -68,12 +68,12 @@
 <body>
     
     <p><a href="../index.html" >トップページへ戻る</a></p>
-    <h2>川中島の戦い シーズン3<br>総大将勝ち抜き戦</h2>
+    <h2>川中島の戦い シーズン3<br>総大将 勝ち抜き戦</h2>
 
     <div class="center">
         <table id="myTable">
             <tr>
-                <th>予選順位 同盟</th>
+                <th>同盟 (予選順位)</th>
                 <th>1戦目</th>
                 <th>2戦目</th>
                 <th>3戦目</th>
@@ -83,35 +83,64 @@
     </div>
     <div id="form-link">お問い合わせはTwitter(<a href="https://twitter.com/text_89">@text_89</a>)まで</div>
     <script>
+        function getIndexArray(arr) {
+            const indexedArray = arr.map((value, index) => [value, index]);
+            indexedArray.sort((a, b) => b[0] - a[0]);
+            return indexedArray.map((pair) => pair[1]);
+        }
+
         var table = document.getElementById('myTable');
         var unions = [
-            {'server':'S42', 'name':'網走幼稚園'}, {'server':'S4', 'name':'天空の華園'}, 
-            {'server':'S33', 'name':'姫沙羅'}, {'server':'S50', 'name':'玉砕'}, 
-            {'server':'S48', 'name':'鷹の団'}, {'server':'S48', 'name':'加賀百万石'}, 
-            {'server':'S45', 'name':'関東警備'}, {'server':'S13', 'name':'六分の一殿'}, 
-            {'server':'S53', 'name':'神々の系譜'}, {'server':'S52', 'name':'天下布武'}, 
-            {'server':'S52', 'name':'仁月'}, {'server':'S27', 'name':'鉄華団'}, 
-            {'server':'S29', 'name':'戦国自衛隊'}, {'server':'S45', 'name':'爪紅'}, 
-            {'server':'S33', 'name':'聖ライス皇国'}, {'server':'S47', 'name':'島津連合'}]
+            {'server':'S42', 'name':'網走幼稚園', 'elim_rank': 1}, 
+            {'server':'S4', 'name':'天空の華園', 'elim_rank': 2}, 
+            {'server':'S33', 'name':'姫沙羅', 'elim_rank': 3}, 
+            {'server':'S50', 'name':'玉砕', 'elim_rank': 4}, 
+            {'server':'S48', 'name':'鷹の団', 'elim_rank': 5}, 
+            {'server':'S48', 'name':'加賀百万石', 'elim_rank': 6}, 
+            {'server':'S45', 'name':'関東警備', 'elim_rank': 7}, 
+            {'server':'S13', 'name':'六分の一殿', 'elim_rank': 8}, 
+            {'server':'S53', 'name':'神々の系譜', 'elim_rank': 9}, 
+            {'server':'S52', 'name':'天下布武', 'elim_rank': 10}, 
+            {'server':'S52', 'name':'仁月', 'elim_rank': 11}, 
+            {'server':'S27', 'name':'鉄華団', 'elim_rank': 12}, 
+            {'server':'S29', 'name':'戦国自衛隊', 'elim_rank': 13}, 
+            {'server':'S45', 'name':'爪紅', 'elim_rank': 14}, 
+            {'server':'S33', 'name':'聖ライス皇国', 'elim_rank': 15}, 
+            {'server':'S47', 'name':'島津連合', 'elim_rank': 16}]
         
         var opp = [[15,14,13,12,11,10,9,8,7,6,5,4,3,2,1,0], [7,9,5,4,3,2,14,0,15,1,13,12,11,10,6,8], [], []] 
-        var result = [[1,1,1,0,0,1,0,1,0,1,0,1,1,0,0,0], [], [], []] 
+        var result = [[1,1,1,0,0,1,0,1,0,1,0,1,1,0,0,0], [], [], []]
+
+        var tmp_point = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+        for (var i=0; i<16; i++) {
+            for (var j=0; j<4; j++){
+                if (result[j][i] >= 0){
+                    tmp_point[i] += (10 ** (5-j)) * result[j][i];
+                }
+            }
+        }
+        var ranks = getIndexArray(tmp_point);
 
         for (var i = 0; i < 16; i++) {
             var row = table.insertRow(i+1);
             var cell1 = row.insertCell(0);
-            cell1.innerHTML = (i+1) + "位 " + '<a href="../union_info/index.html?server=' + unions[i]['server'] + "&name=" + unions[i]['name'] + '">[' + unions[i]['server'] + "] " + unions[i]['name'] + "</a>";
+            var rank = ranks[i];
+
+            cell1.innerHTML = '<a href="../union_info/index.html?server=' + unions[rank]['server'] + "&name=" + unions[rank]['name'] + '">[' + unions[rank]['server'] + "] " + unions[rank]['name'] + "</a>" + " (" + unions[rank]['elim_rank'] + ")";
             for (var j = 0; j < 4; j++) {
                 var cell = row.insertCell(j+1);
                 if (opp[j][i] >= 0){
-                    if (result[j][i] == 1){
-                        cell.innerHTML = "勝 " + '<a href="../union_info/index.html?server=' + unions[opp[j][i]]['server'] + "&name=" + unions[opp[j][i]]['name'] + '">[' + unions[opp[j][i]]['server'] + "] " + unions[opp[j][i]]['name'] + "</a>";
+                    var opp_union = unions[opp[j][rank]];
+                    var opp_union_html = '<a href="../union_info/index.html?server=' + opp_union['server'] + "&name=" + opp_union['name'] + '">[' + opp_union['server'] + "] " + opp_union['name'] + "</a>" + " (" + opp_union['elim_rank'] + ")"
+
+                    if (result[j][rank] == 1){
+                        cell.innerHTML = "勝 " + opp_union_html;
                         cell.style.cssText = "background-color: #ffe0eb"
-                    }else if (result[j][i] == 0) {
-                        cell.innerHTML = "敗 " + '<a href="../union_info/index.html?server=' + unions[opp[j][i]]['server'] + "&name=" + unions[opp[j][i]]['name'] + '">[' + unions[opp[j][i]]['server'] + "] " + unions[opp[j][i]]['name'] + "</a>";
+                    }else if (result[j][rank] == 0) {
+                        cell.innerHTML = "敗 " + opp_union_html;
                         cell.style.cssText = "background-color: #e0ebff"
                     }else {
-                        cell.innerHTML = '<a href="../union_info/index.html?server=' + unions[opp[j][i]]['server'] + "&name=" + unions[opp[j][i]]['name'] + '">[' + unions[opp[j][i]]['server'] + "] " + unions[opp[j][i]]['name'] + "</a>";
+                        cell.innerHTML = opp_union_html;
                     }
                 }else{
 
