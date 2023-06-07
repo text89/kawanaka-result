@@ -358,7 +358,7 @@ function generateHistogram(data){
         }
     }
 
-    new Chart(ctx, {
+    var chart = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: Array.from({length: ((maxPower / 50) + 1) - minX}, (_, i) => (i * 50) + minX * 50),
@@ -391,11 +391,11 @@ function generateHistogram(data){
                 }
             },
             responsive: true,
-            // maintainAspectRatio: false
+            maintainAspectRatio: false
         }
     });
 
-    new Chart(ctxLevel, {
+    var chartLevel = new Chart(ctxLevel, {
         type: 'bar',
         data: {
             labels: Array.from({length: ((maxLevel) + 1) - minXLevel}, (_, i) => (i + minXLevel)),
@@ -428,9 +428,21 @@ function generateHistogram(data){
                 }
             },
             responsive: true,
-            // maintainAspectRatio: false
+            maintainAspectRatio: false
         }
     });
+
+    if (document.documentElement.clientWidth < 600){
+        chart.canvas.parentNode.style.height = (document.documentElement.clientWidth * 0.6) + 'px';
+        chart.canvas.parentNode.style.width = (document.documentElement.clientWidth * 0.9) + 'px';
+        chartLevel.canvas.parentNode.style.height = (document.documentElement.clientWidth * 0.6) + 'px';
+        chartLevel.canvas.parentNode.style.width = (document.documentElement.clientWidth * 0.9) + 'px';
+    }else {
+        chart.canvas.parentNode.style.height = '400px';
+        chart.canvas.parentNode.style.width = '800px';
+        chartLevel.canvas.parentNode.style.height = '400px';
+        chartLevel.canvas.parentNode.style.width = '800px';
+    }
 }
 
 function displayTopPowers(data) {
