@@ -11,40 +11,42 @@ function average(list){
     return sum / list.length;
 }
 
-function readUnionData(path){
-    
-    csvData = d3.csv(path);
-    if (! csvData.length == 0){
-        var unionMemberPower = document.getElementById("union-member-power-date");
-        unionMemberPower.textContent = "(" + csvData["date"] + '時点)';
-        var unionMemberLevel = document.getElementById("union-member-level-date");
-        unionMemberLevel.textContent = "(" + csvData["date"] + '時点)';
-        const powerData = document.getElementById("power-histogram-label");
-        powerData.textContent = "";
-        const levelData = document.getElementById("level-histogram-label");
-        levelData.textContent = "";
-        
-        // generateHistogram(data);
-        // displayTopPowers(data);
-    }
-    
-}
-
 function round(num){
     num = num * 10;
     num = Math.round(num);
     return (num / 10);
 }
 
-function _readUnionData(union_list){
+function createChart(ctx, list, maxLength, y_label){
+    return new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: Array.from({length: maxLength}, (_, i) => i + 1),
+            datasets: list
+        },
+        options: {
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: '同盟内順位'
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: y_label
+                    }
+                }
+            }
+        }
+    });
+}
+
+function readUnionData(union_list){
 
     // Read and process CSV data
     (async () => {
-        // const data = [];
-        // for (const file of csvFiles) {
-        //     const csvData = await d3.csv(file);
-        //     data.push(...csvData);
-        // }
 
         var power_list = [[],[]];
         var level_list = [[],[]];
@@ -87,7 +89,6 @@ function _readUnionData(union_list){
         }
         table.appendChild(header);
 
-        
         for (var num of [5, 10, 20, 30, 40, 50]){
             var tr = document.createElement("tr");
             var td = document.createElement("td");
@@ -133,60 +134,13 @@ function _readUnionData(union_list){
             chartLevel.destroy();
         }
         
-        chartLevel = new Chart(ctxLevel, {
-            type: 'line',
-            data: {
-                labels: Array.from({length: maxLength}, (_, i) => i + 1),
-                datasets: datasetListLevel
-            },
-            options: {
-                scales: {
-                    x: {
-                        title: {
-                            display: true,
-                            text: '同盟内順位' // ここにX軸のラベル名を入力してください
-                        }
-                    },
-                    y: {
-                        title: {
-                            display: true,
-                            text: '天守レベル' // ここにY軸のラベル名を入力してください
-                        }
-                    }
-                }
-            }
-        });
+        chartLevel = createChart(ctxLevel, datasetListLevel, maxLength, '天守レベル')
 
         var ctx = document.getElementById('canvas').getContext('2d');
         if (chart){
             chart.destroy();
         }
-        
-        chart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: Array.from({length: maxLength}, (_, i) => i + 1),
-                datasets: datasetList
-            },
-            options: {
-                scales: {
-                    x: {
-                        title: {
-                            display: true,
-                            text: '同盟内順位' // ここにX軸のラベル名を入力してください
-                        }
-                    },
-                    y: {
-                        title: {
-                            display: true,
-                            text: '領主総合力' // ここにY軸のラベル名を入力してください
-                        }
-                    }
-                }
-            }
-        });
-        
-
+        chart = createChart(ctx, datasetList, maxLength, '領主総合力')
 
     })();
 }
@@ -314,12 +268,12 @@ var unionList = [union1, union2]
 
 var chart = ""
 var chartLevel = ""
-_readUnionData(unionList);
+readUnionData(unionList);
 
 function compareClick(){
     var union1 = {'server': "S" + selectA.options[selectA.selectedIndex].textContent.split('s')[1], 'name': selectB.options[selectB.selectedIndex].textContent};
     var union2 = {'server': "S" + selectC.options[selectC.selectedIndex].textContent.split('s')[1], 'name': selectD.options[selectD.selectedIndex].textContent};
 
     var unionList = [union1, union2]
-    _readUnionData(unionList);
+    readUnionData(unionList);
 }

@@ -53,10 +53,20 @@ th, td {
 .chart-container {
     display: flex;
     justify-content: center;
-    margin-top: 5%;
+    margin-top: 24px;
     margin-left: 10%;
     margin-right: 10%;
+    margin-bottom: 32px;
 }
+@media screen and (max-width: 600px) {
+    .chart-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 24px;
+        margin-bottom: 32px;
+    }
+}
+
 div#form-link {
     margin-top: 32px;
     margin-bottom: 16px;
