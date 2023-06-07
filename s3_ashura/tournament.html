@@ -12,6 +12,11 @@
             width: 80%;
             overflow: auto;
         }
+        table {
+            border-collapse: collapse;
+            margin: 24px;
+            width: 100%;   
+        }
         @media screen and (max-width: 600px) {
             .center {
                 /* margin-left: auto;
@@ -20,13 +25,16 @@
                 width: 100%;
                 overflow: auto;
             }
+            table {
+                border-collapse: collapse;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 24px;
+                margin-bottom: 24px;
+                width: 100%;   
+            }
         }
-        table {
-            border-collapse: collapse;
-            margin: 24px;
-            width: 100%;
-            
-        }
+        
         th, td {
             border: 1px solid black;
             padding: 8px;
