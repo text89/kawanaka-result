@@ -57,3 +57,8 @@ th, td {
     margin-left: 10%;
     margin-right: 10%;
 }
+div#form-link {
+    margin-top: 32px;
+    margin-bottom: 16px;
+    text-align: center;
+}
