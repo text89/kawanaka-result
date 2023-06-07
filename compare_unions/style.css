@@ -32,7 +32,7 @@ p {
     padding-top: 8px;
 }
 h2,h3 {
-    padding-top: 8px;
+    padding-top: 64px;
     padding-bottom: 8px;
     text-align: center;
 }
@@ -54,8 +54,8 @@ th, td {
     display: flex;
     justify-content: center;
     margin-top: 24px;
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: 32px;
 }
 @media screen and (max-width: 600px) {
@@ -64,6 +64,8 @@ th, td {
         justify-content: center;
         margin-top: 24px;
         margin-bottom: 32px;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 

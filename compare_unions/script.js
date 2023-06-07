@@ -34,11 +34,12 @@ function createChart(ctx, list, maxLength, y_label){
                 },
                 y: {
                     title: {
-                        display: true,
+                        display: false,
                         text: y_label
                     }
                 }
-            }
+            },
+            maintainAspectRatio: false
         }
     });
 }
@@ -141,6 +142,19 @@ function readUnionData(union_list){
             chart.destroy();
         }
         chart = createChart(ctx, datasetList, maxLength, '領主総合力')
+
+        if (document.documentElement.clientWidth < 600){
+            chart.canvas.parentNode.style.height = '256px';
+            chart.canvas.parentNode.style.width = (document.documentElement.clientWidth * 0.9) + 'px';
+            chartLevel.canvas.parentNode.style.height = '256px';
+            chartLevel.canvas.parentNode.style.width = (document.documentElement.clientWidth * 0.9) + 'px';
+        }else {
+            chart.canvas.parentNode.style.height = '400px';
+            chart.canvas.parentNode.style.width = '800px';
+            chartLevel.canvas.parentNode.style.height = '400px';
+            chartLevel.canvas.parentNode.style.width = '800px';
+        }
+        
 
     })();
 }
