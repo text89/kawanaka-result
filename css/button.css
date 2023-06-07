@@ -31,7 +31,8 @@
     text-decoration: none;
     transition: background-color 0.3s ease;
 
-    margin-left: 10px;
+    margin-left: 6px;
+    margin-right: 6px;
     margin-bottom: 8px;
 }
 .ashura-button {
@@ -81,7 +82,7 @@
 .server-button {
     display: inline-block;
     width: 64px;
-    margin: 5px;
+    margin: 4px 4px 4px 4px;
     padding: 10px 10px;
     font-size: 16px;
     text-align: center;
@@ -95,4 +96,15 @@
 .server-button:hover {
     background-color: #0056b3;
     color: #fff;
+}
+
+.compare-unions-button {
+    background-color: #ddddee;
+}
+.compare-unions-button:hover {
+    background-color: #FFddaa;
+    color: #dd8520;
+}
+.compare-button-text {
+    color: #323264;
 }
