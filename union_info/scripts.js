@@ -77,10 +77,13 @@ function setResult(res_data, tableId){
         dataRow.appendChild(td);
 
         td = document.createElement('td');
+        td.classList.add("number");
         td.textContent = res["po"];
         dataRow.appendChild(td);
         
         td = document.createElement('td');
+        td.classList.add("union-name");
+        
         if (res["op_ser"] == '*'){
             td.textContent = "不戦勝";
         }else {
@@ -168,6 +171,10 @@ function generateTable(unionInfo, seasonId) {
       for (const value of data) {
         const td = document.createElement('td');
         td.textContent = value;
+        if (column_num == 3){
+            console.log(value)
+            td.classList.add("number");
+        }
         // if (column_num == 2){
         //   td.onclick = event => onclickTd(data, event);  // => はアロー関数
         //   td.style.cursor = "pointer"
@@ -479,9 +486,9 @@ function displayTopPowers(data) {
         levelTd.textContent = Math.floor(row.level);
         powerTd.textContent = row.power;
 
-        rankTd.classList.add("rank-td");
-        levelTd.classList.add("level-td");
-        powerTd.classList.add("power-td");
+        rankTd.classList.add("rank-td", "number");
+        levelTd.classList.add("level-td", "number");
+        powerTd.classList.add("power-td", "number");
 
         tr.appendChild(rankTd);
         tr.appendChild(levelTd);
