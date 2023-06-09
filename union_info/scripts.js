@@ -1,7 +1,16 @@
 
 function getUnionPath(server, name){
-    path = "./unions/s" + server.split("S")[1] + "/" + name + ".csv"
-    return path
+    server = "s" + server.split("S")[1]
+
+    unions_in_server = unions_in_list.find(d => d.server === server);
+    if (unions_in_server) {
+        console.log(unions_in_server)
+        if (unions_in_server.unions.find(u => u === name)){
+            return "./unions/" + server + "/" + name + ".csv";
+        }
+    }
+
+    return null
 }
 
 function searchUnion(server, name, season_list, season_id){
@@ -244,8 +253,6 @@ if (Object.keys(unionInfo).length > 0){
     setResult(unionInfo, "s3-result-container");
 }
 
-const csvFiles = [csvFilePath]; // Add your CSV file paths here
-
 const levelMargin = { top: 30, right: 30, bottom: 70, left: 60 };
 const powerMargin = { top: 30, right: 30, bottom: 70, left: 60 };
 
@@ -320,7 +327,7 @@ function generateHistogram(data){
         return p.power;
     });
     var levelList = jsonData.map(function (p) {
-        return p.level;
+        return Math.trunc(p.level);
     });
     var maxPower = Math.max.apply(null, powerList); // set the max power as you need
     var maxLevel= Math.max.apply(null, levelList); // set the max level as you need
@@ -334,7 +341,7 @@ function generateHistogram(data){
     // Count the frequency of the data
     jsonData.forEach(function(obj) {
         var power = obj.power;
-        var level = obj.level;
+        var level = Math.trunc(obj.level);
         if(power >= 0 && power <= maxPower) {
             dataFrequency[Math.floor(power / 50)]++;
         }
@@ -357,7 +364,6 @@ function generateHistogram(data){
             break
         }
     }
-
     var chart = new Chart(ctx, {
         type: 'bar',
         data: {
@@ -493,11 +499,10 @@ function displayTopPowers(data) {
 // Read and process CSV data
 (async () => {
     const data = [];
-    for (const file of csvFiles) {
-        const csvData = await d3.csv(file);
+    if (csvFilePath) {
+        const csvData = await d3.csv(csvFilePath);
         data.push(...csvData);
-    }
-    if (! data.length == 0){
+    
         var unionMemberPower = document.getElementById("union-member-power-date");
         unionMemberPower.textContent = "(" + data[0]["date"] + '時点)';
         var unionMemberLevel = document.getElementById("union-member-level-date");
@@ -510,5 +515,12 @@ function displayTopPowers(data) {
         // createHistogram(data, d => +d.power, 50, "#power-histogram", powerMargin);
         generateHistogram(data);
         displayTopPowers(data);
+    }else {
+        var parent = document.getElementById('container-histogram-level');
+        var child = document.getElementById('histogram-level');
+        parent.removeChild(child);
+        var parent = document.getElementById('container-histogram-power');
+        var child = document.getElementById('histogram-power');
+        parent.removeChild(child);
     }
 })();

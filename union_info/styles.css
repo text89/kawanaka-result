@@ -61,3 +61,8 @@ div {
     text-align: center;
 }
 
+div#form-link {
+    margin-top: 16px;
+    margin-bottom: 16px;
+    text-align: center;
+}
