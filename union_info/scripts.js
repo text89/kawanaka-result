@@ -445,9 +445,9 @@ function generateHistogram(data){
 
     if (document.documentElement.clientWidth < 600){
         chart.canvas.parentNode.style.height = (document.documentElement.clientWidth * 0.6) + 'px';
-        chart.canvas.parentNode.style.width = (document.documentElement.clientWidth * 0.9) + 'px';
+        chart.canvas.parentNode.parentNode.style.width = (document.documentElement.clientWidth * 0.9) + 'px';
         chartLevel.canvas.parentNode.style.height = (document.documentElement.clientWidth * 0.6) + 'px';
-        chartLevel.canvas.parentNode.style.width = (document.documentElement.clientWidth * 0.9) + 'px';
+        chartLevel.canvas.parentNode.parentNode.style.width = (document.documentElement.clientWidth * 0.9) + 'px';
     }else {
         chart.canvas.parentNode.style.height = '400px';
         chart.canvas.parentNode.parentNode.style.width = '800px';
