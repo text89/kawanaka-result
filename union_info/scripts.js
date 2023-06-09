@@ -4,7 +4,6 @@ function getUnionPath(server, name){
 
     unions_in_server = unions_in_list.find(d => d.server === server);
     if (unions_in_server) {
-        console.log(unions_in_server)
         if (unions_in_server.unions.find(u => u === name)){
             return "./unions/" + server + "/" + name + ".csv";
         }
@@ -172,7 +171,6 @@ function generateTable(unionInfo, seasonId) {
         const td = document.createElement('td');
         td.textContent = value;
         if (column_num == 3){
-            console.log(value)
             td.classList.add("number");
         }
         // if (column_num == 2){
@@ -452,9 +450,9 @@ function generateHistogram(data){
         chartLevel.canvas.parentNode.style.width = (document.documentElement.clientWidth * 0.9) + 'px';
     }else {
         chart.canvas.parentNode.style.height = '400px';
-        chart.canvas.parentNode.style.width = '800px';
+        chart.canvas.parentNode.parentNode.style.width = '800px';
         chartLevel.canvas.parentNode.style.height = '400px';
-        chartLevel.canvas.parentNode.style.width = '800px';
+        chartLevel.canvas.parentNode.parentNode.style.width = '800px';
     }
 }
 

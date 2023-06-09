@@ -61,11 +61,6 @@ h2 {
     font-size: large;
 }
 
-#level-histogram, #power-histogram {
-    width: 100%;
-    height: 400px;
-}
-
 #s2-result-container, #s3-result-container, #top-powers-container {
     margin-top: 24px;;
 }
@@ -78,4 +73,10 @@ div#form-link {
     margin-top: 16px;
     margin-bottom: 16px;
     text-align: center;
+}
+
+div#container-histogram-power{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
