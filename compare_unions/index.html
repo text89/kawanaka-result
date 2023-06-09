@@ -22,20 +22,28 @@
         <h2>同盟比較</h2>
         
         <div id="container" class="container">
-            <div class="select-box-set">
-                <select id="selectA" class="select-box" onchange="populateB()">
-                </select>
-            
-                <select id="selectB" class="select-box">
-                </select>
-            </div>
-            <div class="select-box-set">
-                <select id="selectC" class="select-box" onchange="populateD()">
-                </select>
-            
-                <select id="selectD" class="select-box">
-                </select>
-            </div>
+            <table class="input-unions">
+                <tr class="input-unions">
+                    <th class="input-unions server-input">サーバー</th>
+                    <th class="input-unions union-input">同盟</th>
+                </tr>
+                <tr class="input-unions">
+                    <td class="input-unions">
+                        <select id="selectA" class="select-box" onchange="populateB()"></select>
+                    </td>
+                    <td class="input-unions">
+                        <select id="selectB" class="select-box"></select>
+                    </td>
+                </tr>
+                <tr class="input-unions">
+                    <td class="input-unions">
+                        <select id="selectC" class="select-box" onchange="populateD()"></select>
+                    </td>
+                    <td class="input-unions">
+                        <select id="selectD" class="select-box"></select>
+                    </td>
+                </tr>
+            </table>
             <button id="button-compare" onclick="compareClick()">比較</button>
         </div>
         

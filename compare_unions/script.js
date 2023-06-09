@@ -44,6 +44,11 @@ function createChart(ctx, list, maxLength, y_label){
     });
 }
 
+function checkDotInString(str) {
+    var regex = /\./;
+    return regex.test(str);
+}
+
 function readUnionData(union_list){
 
     // Read and process CSV data
@@ -79,26 +84,50 @@ function readUnionData(union_list){
         table.innerHTML = "";
         var header = document.createElement("tr");
 
-        var td = document.createElement("td");
-        td.textContent = "";
-        header.appendChild(td);
+        var th = document.createElement("th");
+        th.classList.add('comparing-table');
+        th.classList.add('first-column');
+        th.textContent = "";
+        header.appendChild(th);
         
         for (var i=0; i<union_list.length; i++){
-            var td = document.createElement("td");
-            td.textContent = union_list[i]['server'] + " " + union_list[i]['name'];
-            header.appendChild(td);
+            var th = document.createElement("th");
+            th.classList.add('comparing-table');
+            if (i == 0) {
+                th.classList.add("first-union");
+            }else if (i == 1) {
+                th.classList.add("second-union");
+            }
+            
+            th.innerHTML = "<div id='compare-union-name'>" + union_list[i]['server'] + " " + union_list[i]['name'] + "</div>";
+            header.appendChild(th);
         }
         table.appendChild(header);
 
         for (var num of [5, 10, 20, 30, 40, 50]){
             var tr = document.createElement("tr");
             var td = document.createElement("td");
+            if (num == 50){
+                td.classList.add("final-row");
+            }
+            td.classList.add('first-column');
             td.textContent = "上位" + num + "名平均";
             tr.appendChild(td);
 
             for (var i=0; i<union_list.length; i++){
                 var td = document.createElement("td");
-                td.textContent = round(average(power_list[i].slice(0,num)));
+                td.classList.add("number");
+                if (num == 50){
+                    td.classList.add("final-row");
+                }
+                
+                var textPower = String(round(average(power_list[i].slice(0,num))));
+                if (checkDotInString(textPower)){
+                    td.textContent = textPower;
+                }else {
+                    td.textContent = textPower + ".0";
+                }
+                
                 tr.appendChild(td);
             }
             table.appendChild(tr);

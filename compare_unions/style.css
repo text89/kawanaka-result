@@ -4,6 +4,25 @@ div#container {
     gap: 10px;
     margin-bottom: 16px;
 }
+.input-unions {
+    border: 1;
+}
+table {
+    border-radius: 4px;
+}
+th.server-input {
+    text-align: center;
+    width: 100px;
+    background-color: #525284;
+    color: white;
+    
+}
+th.union-input {
+    text-align: center;
+    width: 160px;
+    background-color: #525284;
+    color: white;
+}
 .container {
     display: flex;
     flex-direction: column;
@@ -77,4 +96,38 @@ div#form-link {
     margin-top: 32px;
     margin-bottom: 16px;
     text-align: center;
+}
+
+th.first-union {
+    background-color: rgb(255, 99, 132);
+    padding: 8px;
+}
+
+th.second-union {
+    background-color: rgb(75, 192, 192);
+}
+
+div#compare-union-name {
+    background-color: white;
+    padding: 0px 8px 0px 8px;
+}
+
+td.number {
+    text-align: right;
+    font-family: consolas, monaco, "Lucida Console", monospace;
+    padding-right: 16px;
+    border-right: 0px;
+    border-left: 0px;
+}
+
+.first-column {
+    border-left: 0px;
+}
+
+th.comparing-table {
+    border-top: 0px;
+}
+
+td.final-row {
+    border-bottom: 0px;
 }
