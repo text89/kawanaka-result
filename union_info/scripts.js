@@ -125,6 +125,12 @@ function generateTable(unionInfo, seasonId) {
         }else {
             return null;
         }
+    }else if(seasonId == "s4"){
+        if (unionInfo["cls_" + seasonId] == "ashura"){
+            csvData = ashura_s4_result_table[ashura_s4_result_table.length - 1];
+        }else {
+            return null;
+        }
     }else {
         return null;
     }
@@ -250,12 +256,23 @@ if (Object.keys(unionInfo).length > 0){
 }
 
 season_list = [ashura_s3, tenkabito_s3, soudaisho_s3, onimusha_s3, aramusha_s3]
+console.log(season_list)
 unionInfo = searchUnion(converted_server, params['name'], season_list, "s3")
 if (Object.keys(unionInfo).length > 0){
     const resultData = document.getElementById("s3-final-container");
     resultData.textContent = "";
     generateTable(unionInfo, "s3");
     setResult(unionInfo, "s3-result-container");
+}
+
+season_list = [ashura_s4]
+unionInfo = searchUnion(converted_server, params['name'], season_list, "s4")
+
+if (Object.keys(unionInfo).length > 0){
+    const resultData = document.getElementById("s4-final-container");
+    resultData.textContent = "";
+    generateTable(unionInfo, "s4");
+    setResult(unionInfo, "s4-result-container");
 }
 
 const levelMargin = { top: 30, right: 30, bottom: 70, left: 60 };

@@ -8,13 +8,26 @@
     gtag('config', 'G-0JBDEE8787');
     </script>
     <title>新信長の野望 同盟情報まとめ</title>
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        h1 {
-            padding-top: 8px;
+        div#whole-page {
+    
+            background-image: url(img/background.jpg);
+            background-position: center;
+            background-size: cover;
+            text-align: center;
+            padding-bottom: 32px;
+        }
+        h1#site-title {
+            padding-top: 16px;
             padding-bottom: 8px;
             text-align: center;
+            
+            color: #fff;
+            text-shadow:1px 1px 0 #111, -1px -1px 0 #111,
+                        -1px 1px 0 #111, 1px -1px 0 #111,
+                        0px 1px 0 #111,  0-1px 0 #111,
+                        -1px 0 0 #111, 1px 0 0 #111;
         }
         h2 {
             padding-top: 8px;
@@ -30,7 +43,7 @@
             text-align: center;
         }
         div#form-link {
-            margin-top: 32px;
+            margin-top: 16px;
             margin-bottom: 16px;
             text-align: center;
         }
@@ -60,18 +73,6 @@
             color: white;
         }
     
-        @media screen and (max-width: 600px) {
-            td {
-            font-size: 18px;
-            }
-        }
-    
-        @media screen and (max-width: 400px) {
-            td {
-            font-size: 16px;
-            }
-        }
-    
         .server-button-list {
             text-align: center;
             padding: 0px 36px;
@@ -85,6 +86,7 @@
             margin-left: 16px;
             margin-right: 16px;
             border-radius: 8px;
+            
         }
     
         div.tile-title {
@@ -102,32 +104,59 @@
             padding-top: 4px;
             padding-bottom: 16px;
             margin-top: 16px;
-            margin-left: 8px;
-            margin-right: 8px;
+            margin-left: auto;
+            margin-right: auto;
+            
             border-radius: 8px;
+            max-width: 720px;
+    
+            opacity: 0.94;
+    
         }
     
         h2.tile-title {
             color: white;
         }
+    
+        @media screen and (max-width: 720px) {
+            div.large-tile {
+                margin-left: 8px;
+                margin-right: 8px;
+            }
+        }
         
     </style>
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+    <link rel="manifest" href="./site.webmanifest">
+    <link rel="mask-icon" href="./safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="./css/button.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     </head>
     <body>
-        <h1>新信長の野望<br>同盟情報まとめ</h1>
+        <div id="whole-page">
+        <h1 id="site-title">新信長の野望<br>同盟情報まとめ</h1>
     
-        <h2 id="previous-season">過去のシーズン</h2>
-        <h2>川中島の戦い<br>シーズン2</h2>
-        <h3>階級別ランキング</h3>
-        <div class="another-ranking-link">
-            <p>
-                <a href="./s2_ashura/index.html" class="button-link ashura-button">阿修羅</a>
-                <a href="./s2_tenkabito/index.html" class="button-link tenkabito-button">天下人</a>
-            </p>
+        <div class="large-tile">
+            <h2 class="tile-title">川中島の戦い<br>シーズン2</h2>
+    
+            <div class="tile-background">
+                <div class="tile-title">
+                    <h3 class="tile-title">予選</h3>
+                </div>
+                <div class="another-ranking-link">
+                    <p>
+                        <a href="./s2_ashura/index.html" class="button-link ashura-button">阿修羅</a> 
+                        <a href="./s2_tenkabito/index.html" class="button-link tenkabito-button" >天下人</a> 
+                    </p>
+                </div>
+            </div>
         </div>
-        <div id="form-link">お問い合わせはTwitter(<a href="https://twitter.com/text_89">@text_89</a>)まで</div>
+        <!-- <div id="form-link">お問い合わせはTwitter(<a href="https://twitter.com/text_89">@text_89</a>)まで</div> -->
         
     </body>
     
