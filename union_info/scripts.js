@@ -128,6 +128,8 @@ function generateTable(unionInfo, seasonId) {
     }else if(seasonId == "s4"){
         if (unionInfo["cls_" + seasonId] == "ashura"){
             csvData = ashura_s4_result_table[ashura_s4_result_table.length - 1];
+        }else if (unionInfo["cls_" + seasonId] == "tenkabito"){
+            csvData = tenkabito_s4_result_table[tenkabito_s4_result_table.length - 1];;
         }else {
             return null;
         }
@@ -265,7 +267,7 @@ if (Object.keys(unionInfo).length > 0){
     setResult(unionInfo, "s3-result-container");
 }
 
-season_list = [ashura_s4]
+season_list = [ashura_s4, tenkabito_s4]
 unionInfo = searchUnion(converted_server, params['name'], season_list, "s4")
 
 if (Object.keys(unionInfo).length > 0){
