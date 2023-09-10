@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>シーズン4 鬼武者 勝ち抜き戦</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .center {
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            width: 80%;
+            /* overflow: auto; */
+        }
+        table {
+            border-collapse: collapse;
+            margin: 24px;
+            width: 100%;   
+        }
+        @media screen and (max-width: 600px) {
+            .center {
+                /* margin-left: auto;
+                margin-right: auto; */
+                text-align: center;
+                width: 100%;
+                overflow: auto;
+            }
+            table {
+                border-collapse: collapse;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 24px;
+                margin-bottom: 24px;
+                width: 100%;   
+            }
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            padding-left: 16px;
+            padding-right: 16px;
+            text-align: left;
+            white-space: nowrap;
+        }
+        th {
+            background-color: #ba55d3;
+            color: white;
+        }
+        h2 {
+            text-align: center;
+        }
+        p {
+            text-align: center;
+            padding-top: 16px;
+        }
+        div#form-link {
+            margin-bottom: 16px;
+            text-align: center;
+        }
+        @media screen and (max-width: 600px) {
+            td {
+            font-size: 18px;
+            }
+        }
+
+        @media screen and (max-width: 400px) {
+            td {
+            font-size: 16px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+<body>
+    
+    <p><a href="../index.html" >トップページへ戻る</a></p>
+    <h2>川中島の戦い シーズン4<br>鬼武者 勝ち抜き戦</h2>
+
+    <div class="center">
+        <table id="myTable">
+            <tr>
+                <th>同盟 (予選順位)</th>
+                <th>1戦目</th>
+                <th>2戦目</th>
+                <th>3戦目</th>
+                <th>4戦目</th>
+            </tr>
+        </table>
+    </div>
+    <div id="form-link">お問い合わせはTwitter(<a href="https://twitter.com/text_89">@text_89</a>)まで</div>
+    <script>
+        function getIndexArray(arr) {
+            const indexedArray = arr.map((value, index) => [value, index]);
+            indexedArray.sort((a, b) => b[0] - a[0]);
+            return indexedArray.map((pair) => pair[1]);
+        }
+
+        var table = document.getElementById('myTable');
+        var unions = [
+            {'server':'S51', 'name':'雲外蒼天', 'elim_rank': 1}, // 0
+            {'server':'S58', 'name':'ミルフィーユ', 'elim_rank': 2}, // 1
+            {'server':'S55', 'name':'夢幻泡影', 'elim_rank': 3}, // 2
+            {'server':'S57', 'name':'牛宮城', 'elim_rank': 4}, // 3
+            {'server':'S54', 'name':'天歌夢奏', 'elim_rank': 5}, // 4
+            {'server':'S57', 'name':'加賀産上', 'elim_rank': 6}, // 5
+            {'server':'S4', 'name':'RED', 'elim_rank': 7}, // 6
+            {'server':'S11', 'name':'月花', 'elim_rank': 8}, // 7
+            {'server':'S59', 'name':'アメとムチ', 'elim_rank': 9}, // 8
+            {'server':'S57', 'name':'名門・小田家', 'elim_rank': 10}, // 9
+            {'server':'S59', 'name':'協心戮力', 'elim_rank': 11}, // 10
+            {'server':'S57', 'name':'紫陽花', 'elim_rank': 12},// 11
+            {'server':'S52', 'name':'八幡大菩薩', 'elim_rank': 13}, // 12
+            {'server':'S58', 'name':'夜凪', 'elim_rank': 14}, // 13
+            {'server':'S51', 'name':'珍棒會', 'elim_rank': 15}, // 14
+            {'server':'S53', 'name':'ほたるの里k', 'elim_rank': 16} // 15
+        ]
+        
+        var opp = [[15,14,13,12,11,10,9,8,7,6,5,4,3,2,1,0], [], [], []] 
+        // var result = [[1,1,1,1,1,0,1,0,1,0,1,0,0,0,0,0], [1,1,1,1,0,0,0,1,0,0,0,0,1,1,1,0], [1,1,0,0,0,1,1,0,1,0,0,1,1,1,0,0], [0,1,1,0,0,0,1,0,0,1,1,1,0,1,1,0]] 
+        var result = [[],[],[],[]]
+        var tmp_point = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+        for (var i=0; i<16; i++) {
+            for (var j=0; j<4; j++){
+                if (result[j][i] >= 0){
+                    tmp_point[i] += (10 ** (5-j)) * result[j][i];
+                }
+            }
+        }
+        var ranks = getIndexArray(tmp_point);
+
+        for (var i = 0; i < 16; i++) {
+            var row = table.insertRow(i+1);
+            var cell1 = row.insertCell(0);
+            var rank = ranks[i];
+
+            cell1.innerHTML = '<a href="../union_info/index.html?server=' + unions[rank]['server'] + "&name=" + unions[rank]['name'] + '">[' + unions[rank]['server'] + "] " + unions[rank]['name'] + "</a>" + " (" + unions[rank]['elim_rank'] + ")";
+            for (var j = 0; j < 4; j++) {
+                var cell = row.insertCell(j+1);
+                if (opp[j][i] >= 0){
+                    var opp_union = unions[opp[j][rank]];
+                    var opp_union_html = '<a href="../union_info/index.html?server=' + opp_union['server'] + "&name=" + opp_union['name'] + '">[' + opp_union['server'] + "] " + opp_union['name'] + "</a>" + " (" + opp_union['elim_rank'] + ")"
+
+                    if (result[j][rank] == 1){
+                        cell.innerHTML = "勝 " + opp_union_html;
+                        cell.style.cssText = "background-color: #ffe0eb"
+                    }else if (result[j][rank] == 0) {
+                        cell.innerHTML = "敗 " + opp_union_html;
+                        cell.style.cssText = "background-color: #e0ebff"
+                    }else {
+                        cell.innerHTML = opp_union_html;
+                    }
+                }else{
+
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>
