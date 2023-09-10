@@ -25,7 +25,23 @@ function generateTable(csvData, server_id) {
 
   // 表のデータを作成
   for (let i = 1; i < lines.length-1; i++) {
+    if (i == 17){
+      const passLine = document.createElement('tr');
+      const td = document.createElement('td');
+      td.textContent = "予選通過ライン";
+      td.colSpan = "4";
+      td.style.textAlign = "center";
+      td.style.backgroundColor = "gray";
+      td.style.color = "white";
+      passLine.appendChild(td);
+      table.appendChild(passLine);
+    }
+
     const dataRow = document.createElement('tr');
+    if ((i % 2) == 0){
+      dataRow.style.backgroundColor = "#E8E8E8";
+    }
+
     const data = lines[i].split(',');
     const doumei_server_id = data[1]
     if (!(server_id == 0 || doumei_server_id == ("S" + server_id))){continue};
