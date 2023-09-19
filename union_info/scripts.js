@@ -183,7 +183,15 @@ function generateTable(unionInfo, seasonId) {
       column_num = 0
       for (const value of data) {
         const td = document.createElement('td');
-        td.textContent = value;
+        if (column_num == 1){
+            const a_tag = document.createElement('a');
+            a_tag.href = `../server_union_s4/index.html?server=${value}`;
+            a_tag.textContent = value;
+            td.appendChild(a_tag);
+        } else{
+            td.textContent = value;
+        }
+        
         if (column_num == 3){
             td.classList.add("number");
         }
