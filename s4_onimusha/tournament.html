@@ -89,6 +89,7 @@
         </table>
     </div>
     <div id="form-link">お問い合わせはTwitter(<a href="https://twitter.com/text_89">@text_89</a>)まで</div>
+    <script src="../scripts/matchingRule.js"></script>
     <script>
         function getIndexArray(arr) {
             const indexedArray = arr.map((value, index) => [value, index]);
@@ -115,10 +116,10 @@
             {'server':'S51', 'name':'珍棒會', 'elim_rank': 15}, // 14
             {'server':'S53', 'name':'ほたるの里k', 'elim_rank': 16} // 15
         ]
-        
-        var opp = [[15,14,13,12,11,10,9,8,7,6,5,4,3,2,1,0], [], [], []] 
-        // var result = [[1,1,1,1,1,0,1,0,1,0,1,0,0,0,0,0], [1,1,1,1,0,0,0,1,0,0,0,0,1,1,1,0], [1,1,0,0,0,1,1,0,1,0,0,1,1,1,0,0], [0,1,1,0,0,0,1,0,0,1,1,1,0,1,1,0]] 
-        var result = [[],[],[],[]]
+                
+        var result = [[1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0],[],[],[]];
+        let opp = getMatchups(result);
+
         var tmp_point = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
         for (var i=0; i<16; i++) {
             for (var j=0; j<4; j++){
@@ -156,6 +157,7 @@
             }
         }
     </script>
+    
 
 </body>
 </html>
