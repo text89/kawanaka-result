@@ -185,7 +185,7 @@ function generateTable(unionInfo, seasonId) {
         const td = document.createElement('td');
         if (column_num == 1){
             const a_tag = document.createElement('a');
-            a_tag.href = `../server_union_s4/index.html?server=${value}`;
+            a_tag.href = `../server_union_${seasonId}/index.html?server=${value}`;
             a_tag.textContent = value;
             td.appendChild(a_tag);
         } else{
