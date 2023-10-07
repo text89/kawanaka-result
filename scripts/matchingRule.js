@@ -60,13 +60,13 @@ function getMatchups(results) {
         }
     }
 
-    for (let matchNum = 1; matchNum <= getMatchLength+1; matchNum += 1){
-        roundGroup = increaseDimension(initialOrder, 2**matchNum);
+    for (let matchNum = 0; matchNum < getMatchLength; matchNum += 1){
+        roundGroup = increaseDimension(initialOrder, 2**(matchNum+1));
         for(let i = 0; i < roundGroup.length; i += 1){
             for (let j = 0; j < roundGroup[0].length; j += 1){
                 const group = roundGroup[i];
                 const teamId = roundGroup[i][j];
-                matchups[matchNum-1][roundGroup[i][j]] = searchSameResultTeam(teamId, group, results, matchNum-1);
+                matchups[matchNum][roundGroup[i][j]] = searchSameResultTeam(teamId, group, results, matchNum);
             }
         }
     }
