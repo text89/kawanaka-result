@@ -139,6 +139,21 @@ function generateTable(unionInfo, seasonId) {
         }else {
             return null;
         }
+    }else if(seasonId == "s5"){
+        if (unionInfo["cls_" + seasonId] == "ashura"){
+            csvData = ashura_s5_result_table[ashura_s5_result_table.length - 1];
+        }
+        // else if (unionInfo["cls_" + seasonId] == "tenkabito"){
+        //     csvData = tenkabito_s4_result_table[tenkabito_s4_result_table.length - 1];;
+        // }else if (unionInfo["cls_" + seasonId] == "soudaisho"){
+        //     csvData = soudaisho_s4_result_table[soudaisho_s4_result_table.length - 1];;
+        // }else if (unionInfo["cls_" + seasonId] == "onimusha"){
+        //     csvData = onimusha_s4_result_table[onimusha_s4_result_table.length - 1];;
+        // }else if (unionInfo["cls_" + seasonId] == "aramusha"){
+        //     csvData = aramusha_s4_result_table[aramusha_s4_result_table.length - 1];;
+        // }else {
+        //     return null;
+        // }
     }else {
         return null;
     }
@@ -272,8 +287,8 @@ if (Object.keys(unionInfo).length > 0){
 }
 
 season_list = [ashura_s3, tenkabito_s3, soudaisho_s3, onimusha_s3, aramusha_s3]
-console.log(season_list)
 unionInfo = searchUnion(converted_server, params['name'], season_list, "s3")
+
 if (Object.keys(unionInfo).length > 0){
     const resultData = document.getElementById("s3-final-container");
     resultData.textContent = "";
@@ -289,6 +304,16 @@ if (Object.keys(unionInfo).length > 0){
     resultData.textContent = "";
     generateTable(unionInfo, "s4");
     setResult(unionInfo, "s4-result-container");
+}
+
+season_list = [ashura_s5]
+unionInfo = searchUnion(converted_server, params['name'], season_list, "s5")
+
+if (Object.keys(unionInfo).length > 0){
+    const resultData = document.getElementById("s5-final-container");
+    resultData.textContent = "";
+    generateTable(unionInfo, "s5");
+    setResult(unionInfo, "s5-result-container");
 }
 
 const levelMargin = { top: 30, right: 30, bottom: 70, left: 60 };
