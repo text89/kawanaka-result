@@ -15,7 +15,7 @@ if (table.length != 0){
 function generateTable(server_id) {
 
     const ashuraTable = ashura_s5_result_table;
-    // const tenkabitoTable = tenkabito_s4_result_table;
+    const tenkabitoTable = tenkabito_s5_result_table;
     // const soudaishoTable = soudaisho_s4_result_table;
     // const onimushaTable = onimusha_s4_result_table;
     // const aramushaTable = aramusha_s4_result_table;
@@ -33,7 +33,7 @@ function generateTable(server_id) {
     _table.appendChild(headerRow);
     
     _table = appendRows(_table, ashuraTable[ashuraTable.length-1], server_id, '阿修羅');
-    // _table = appendRows(_table, tenkabitoTable[tenkabitoTable.length-1], server_id, '天下人');
+    _table = appendRows(_table, tenkabitoTable[tenkabitoTable.length-1], server_id, '天下人');
     // _table = appendRows(_table, soudaishoTable[soudaishoTable.length-1], server_id, '総大将');
     // _table = appendRows(_table, onimushaTable[onimushaTable.length-1], server_id, '鬼武者');
     // _table = appendRows(_table, aramushaTable[aramushaTable.length-1], server_id, '荒武者');
