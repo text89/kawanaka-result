@@ -42,9 +42,15 @@ function searchSameResultTeam(teamId, group, results, matchNum){
     return -1;
 }
 
-function getMatchups(results) {
+function getMatchups(results, order=[]) {
+    let initialOrder = []
     // 予め決まっているドロー
-    const initialOrder = [0, 15, 7, 8, 3, 12, 4, 11, 1, 14, 6, 9, 2, 13, 5, 10];
+    if (order.length == 0){
+        initialOrder = [0, 15, 7, 8, 3, 12, 4, 11, 1, 14, 6, 9, 2, 13, 5, 10];
+    }else {
+        initialOrder = order;
+    }
+
     let matchups = [
         [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
         [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
