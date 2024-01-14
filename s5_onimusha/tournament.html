@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>シーズン5 天下人 勝ち抜き戦</title>
+    <title>シーズン5 鬼武者 勝ち抜き戦</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
@@ -43,7 +43,7 @@
             white-space: nowrap;
         }
         th {
-            background-color: #dd8520;
+            background-color: #ba55d3;
             color: white;
         }
         h2 {
@@ -75,7 +75,7 @@
 <body>
     
     <p><a href="../index.html" >トップページへ戻る</a></p>
-    <h2>川中島の戦い シーズン5<br>天下人 勝ち抜き戦</h2>
+    <h2>川中島の戦い シーズン5<br>鬼武者 勝ち抜き戦</h2>
 
     <div class="center">
         <table id="myTable">
@@ -99,25 +99,29 @@
 
         var table = document.getElementById('myTable');
         var unions = [
-            {'server':'S11', 'name':'RTC', 'elim_rank': 1}, 
-            {'server':'S52', 'name':'仁月', 'elim_rank': 2}, 
-            {'server':'S39', 'name':'RE・梁山泊', 'elim_rank': 3}, 
-            {'server':'S31', 'name':'珍遊記', 'elim_rank': 4}, 
-            {'server':'S11', 'name':'月花', 'elim_rank': 5}, 
-            {'server':'S19', 'name':'乱舞', 'elim_rank': 6}, 
-            {'server':'S49', 'name':'春夏秋冬', 'elim_rank': 7}, 
-            {'server':'S23', 'name':'美酒佳肴', 'elim_rank': 8}, 
-            {'server':'S53', 'name':'天上庭園', 'elim_rank': 9}, 
-            {'server':'S51', 'name':'のぼうの城', 'elim_rank': 10}, 
-            {'server':'S15', 'name':'ぺろり一門', 'elim_rank': 11}, 
-            {'server':'S43', 'name':'コアラの行進', 'elim_rank': 12}, 
-            {'server':'S45', 'name':'爪紅', 'elim_rank': 13}, 
-            {'server':'S33', 'name':'最後の晩餐', 'elim_rank': 14}, 
-            {'server':'S47', 'name':'加賀百万極', 'elim_rank': 15}, 
-            {'server':'S38', 'name':'天下統一', 'elim_rank': 16}]
-        
-        var result = [[1,1,1,0, 1,1,0,0, 1,1,0,0, 1,0,0,0], [1,1,0,1, 1,1,1,1, 0,0,1,0, 0,0,0,0], [1,1,1,1, 0,0,1,0, 0,0,0,0, 1,1,0,1], [,,,, ,,,, ,,,, ,,,]];
+            {'server':'S55', 'name':'大日本帝国', 'elim_rank': 1}, // 0
+            {'server':'S60', 'name':'苺農業高校', 'elim_rank': 2}, // 1
+            {'server':'S4', 'name':'如水', 'elim_rank': 3}, // 2
+            {'server':'S4', 'name':'一領具足', 'elim_rank': 4}, // 3
+            {'server':'S4', 'name':'河童衆', 'elim_rank': 5}, // 4
+            {'server':'S3', 'name':'夜桜', 'elim_rank': 6}, // 5
+            {'server':'S33', 'name':'天一', 'elim_rank': 7}, // 6
+            {'server':'S8', 'name':'集まれお肉', 'elim_rank': 8}, // 7
+            {'server':'S6', 'name':'皇国軍', 'elim_rank': 9}, // 8
+            {'server':'S47', 'name':'龍球', 'elim_rank': 10}, // 9
+            {'server':'S8', 'name':'宇和島城', 'elim_rank': 11}, // 10
+            {'server':'S29', 'name':'神託の護', 'elim_rank': 12},// 11
+            {'server':'S15', 'name':'餃子の王道', 'elim_rank': 13}, // 12
+            {'server':'S31', 'name':'切磋琢磨', 'elim_rank': 14}, // 13
+            {'server':'S3', 'name':'星に願いを', 'elim_rank': 15}, // 14
+            {'server':'S65', 'name':'天狼の匣', 'elim_rank': 16} // 15
+        ]
+                
+        var result = [[1,1,1,1,0,1,1,1,0,0,0,1,0,0,0,0],[0,0,1,1, 1,0,1,1, 0,1,1,0, 0,0,0,1],[1,0,1,0, 0,1,0,1, 1,1,0,0, 1,0,0,1],[,,,, ,,,, ,,,, ,,,]];
+        // var result = [[1,1,1,1,0,1,1,1,0,0,0,1,0,0,0,0],[0,0,1,1, 1,0,1,1, 0,1,1,0, 0,0,0,1],[],[]];
         let opp = getMatchups(result, []);
+
+        console.log(opp)
 
         var tmp_point = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
         for (var i=0; i<16; i++) {
@@ -137,10 +141,10 @@
             cell1.innerHTML = '<a href="../union_info/index.html?server=' + unions[rank]['server'] + "&name=" + unions[rank]['name'] + '">[' + unions[rank]['server'] + "] " + unions[rank]['name'] + "</a>" + " (" + unions[rank]['elim_rank'] + ")";
             for (var j = 0; j < 4; j++) {
                 var cell = row.insertCell(j+1);
-                
-                if (opp[j][rank] >= 0){
+                if (opp[j][i] >= 0){
                     var opp_union = unions[opp[j][rank]];
                     var opp_union_html = '<a href="../union_info/index.html?server=' + opp_union['server'] + "&name=" + opp_union['name'] + '">[' + opp_union['server'] + "] " + opp_union['name'] + "</a>" + " (" + opp_union['elim_rank'] + ")"
+
                     if (result[j][rank] == 1){
                         cell.innerHTML = "勝 " + opp_union_html;
                         cell.style.cssText = "background-color: #ffe0eb"
@@ -156,6 +160,7 @@
             }
         }
     </script>
+    
 
 </body>
 </html>
