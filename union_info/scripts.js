@@ -143,17 +143,17 @@ function generateTable(unionInfo, seasonId) {
         if (unionInfo["cls_" + seasonId] == "ashura"){
             csvData = ashura_s5_result_table[ashura_s5_result_table.length - 1];
         }
-        // else if (unionInfo["cls_" + seasonId] == "tenkabito"){
-        //     csvData = tenkabito_s4_result_table[tenkabito_s4_result_table.length - 1];;
-        // }else if (unionInfo["cls_" + seasonId] == "soudaisho"){
-        //     csvData = soudaisho_s4_result_table[soudaisho_s4_result_table.length - 1];;
-        // }else if (unionInfo["cls_" + seasonId] == "onimusha"){
-        //     csvData = onimusha_s4_result_table[onimusha_s4_result_table.length - 1];;
-        // }else if (unionInfo["cls_" + seasonId] == "aramusha"){
-        //     csvData = aramusha_s4_result_table[aramusha_s4_result_table.length - 1];;
-        // }else {
-        //     return null;
-        // }
+        else if (unionInfo["cls_" + seasonId] == "tenkabito"){
+            csvData = tenkabito_s5_result_table[tenkabito_s5_result_table.length - 1];
+        }else if (unionInfo["cls_" + seasonId] == "soudaisho"){
+            csvData = soudaisho_s5_result_table[soudaisho_s5_result_table.length - 1];
+        }else if (unionInfo["cls_" + seasonId] == "onimusha"){
+            csvData = onimusha_s5_result_table[onimusha_s5_result_table.length - 1];
+        }else if (unionInfo["cls_" + seasonId] == "aramusha"){
+            csvData = aramusha_s5_result_table[aramusha_s5_result_table.length - 1];
+        }else {
+            return null;
+        }
     }else {
         return null;
     }
@@ -306,7 +306,7 @@ if (Object.keys(unionInfo).length > 0){
     setResult(unionInfo, "s4-result-container");
 }
 
-season_list = [ashura_s5]
+season_list = [ashura_s5, tenkabito_s5, soudaisho_s5, onimusha_s5, aramusha_s5]
 unionInfo = searchUnion(converted_server, params['name'], season_list, "s5")
 
 if (Object.keys(unionInfo).length > 0){
