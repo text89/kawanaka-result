@@ -162,13 +162,11 @@ function generateTable(unionInfo, seasonId) {
             csvData = tenkabito_s6_result_table[tenkabito_s6_result_table.length - 1];
         }else if (unionInfo["cls_" + seasonId] == "soudaisho"){
             csvData = soudaisho_s6_result_table[soudaisho_s6_result_table.length - 1];
+        }else if (unionInfo["cls_" + seasonId] == "onimusha"){
+            csvData = onimusha_s6_result_table[onimusha_s6_result_table.length - 1];
+        }else if (unionInfo["cls_" + seasonId] == "aramusha"){
+            csvData = aramusha_s6_result_table[aramusha_s6_result_table.length - 1];
         }
-        // else if (unionInfo["cls_" + seasonId] == "onimusha"){
-        //     csvData = onimusha_s6_result_table[onimusha_s6_result_table.length - 1];
-        // }
-        // else if (unionInfo["cls_" + seasonId] == "aramusha"){
-        //     csvData = aramusha_s6_result_table[aramusha_s6_result_table.length - 1];
-        // }
         else {
             return null;
         }
@@ -334,7 +332,7 @@ if (Object.keys(unionInfo).length > 0){
     setResult(unionInfo, "s5-result-container");
 }
 
-season_list = [ashura_s6, tenkabito_s6, soudaisho_s6]
+season_list = [ashura_s6, tenkabito_s6, soudaisho_s6, onimusha_s6, aramusha_s6]
 unionInfo = searchUnion(converted_server, params['name'], season_list, "s6")
 
 if (Object.keys(unionInfo).length > 0){

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>シーズン5 阿修羅 勝ち抜き戦</title>
+    <title>シーズン6 阿修羅 勝ち抜き戦</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
@@ -76,7 +76,7 @@
 <body>
     
     <p><a href="../index.html" >トップページへ戻る</a></p>
-    <h2>川中島の戦い シーズン5<br>阿修羅 勝ち抜き戦</h2>
+    <h2>川中島の戦い シーズン6<br>阿修羅 勝ち抜き戦</h2>
 
     <div class="center">
         <table id="myTable">
@@ -102,28 +102,28 @@
         var table = document.getElementById('myTable');
         var unions = [
             {'server':'S4', 'name': '涼風一陣', 'elim_rank': 1}, 
-            {'server':'S19', 'name':'絆2', 'elim_rank': 2}, 
-            {'server':'S5', 'name':'奇兵隊', 'elim_rank': 3}, 
-            {'server':'S13', 'name':'孤軍奮闘', 'elim_rank': 4}, 
+            {'server':'S13', 'name':'孤軍奮闘', 'elim_rank': 2}, 
+            {'server':'S11', 'name':'しす派', 'elim_rank': 3}, 
+            {'server':'S1', 'name':'ショッカー', 'elim_rank': 4}, 
 
-            {'server':'S11', 'name':'しす派', 'elim_rank': 5}, 
+            {'server':'S19', 'name':'絆2', 'elim_rank': 5}, 
             {'server':'S5', 'name':'おつかべ同盟', 'elim_rank': 6}, 
             {'server':'S3', 'name':'姫桜', 'elim_rank': 7}, 
-            {'server':'S10', 'name':'威風堂々', 'elim_rank': 8}, 
+            {'server':'S5', 'name':'奇兵隊', 'elim_rank': 8}, 
 
-            {'server':'S1', 'name':'sakura', 'elim_rank': 9}, 
-            {'server':'S2', 'name':'かるだの', 'elim_rank': 10}, 
-            {'server':'S33', 'name':'九州探題', 'elim_rank': 11},
-            {'server':'S6', 'name':'鬼ヶ島', 'elim_rank': 12}, 
+            {'server':'S47', 'name':'怒髪天', 'elim_rank': 9}, 
+            {'server':'S17', 'name':'赤兎馬', 'elim_rank': 10}, 
+            {'server':'S43', 'name':'殺罰', 'elim_rank': 11},
+            {'server':'S7', 'name':'安芸諸国連合', 'elim_rank': 12}, 
             
-            {'server':'S27', 'name':'戦国の花', 'elim_rank': 13},
-            {'server':'S7', 'name':'安芸諸国連合', 'elim_rank': 14}, 
-            {'server':'S17', 'name':'赤兎馬', 'elim_rank': 15}, 
-            {'server':'S25', 'name':'天上天下', 'elim_rank': 16}
+            {'server':'S2', 'name':'洒々落々', 'elim_rank': 13},
+            {'server':'S33', 'name':'九州探題', 'elim_rank': 14}, 
+            {'server':'S6', 'name':'鬼ヶ島', 'elim_rank': 15}, 
+            {'server':'S9', 'name':'傾奇者', 'elim_rank': 16}
         ]
         
         
-        var result = [[1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0], [1,1,1,1, 0,0,0,0, 1,1,0,0, 1,0,1,0], [1,0,1,0, 1,1,0,0, 1,1,1,1, 0,0,0,0], [0,1,1,0, 1,0,0,1, 0,1,0,1, 0,0,1,1]];
+        var result = [[1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0], [,,, ,,, ,,, ,,,], [], []];
         let initialOrder = [0, 15, 7, 8, 3, 11, 4, 12, 1, 14, 6, 10, 2, 13, 5, 9]
         let opp = getMatchups(result, initialOrder);
 

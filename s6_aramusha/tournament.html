@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>シーズン6 天下人 勝ち抜き戦</title>
+    <title>シーズン6 荒武者 勝ち抜き戦</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
@@ -44,7 +44,7 @@
             white-space: nowrap;
         }
         th {
-            background-color: #dd8520;
+            background-color: #335fe1;
             color: white;
         }
         h2 {
@@ -76,7 +76,7 @@
 <body>
     
     <p><a href="../index.html" >トップページへ戻る</a></p>
-    <h2>川中島の戦い シーズン6<br>天下人 勝ち抜き戦</h2>
+    <h2>川中島の戦い シーズン6<br>荒武者 勝ち抜き戦</h2>
 
     <div class="center">
         <table id="myTable">
@@ -101,30 +101,30 @@
         
         var table = document.getElementById('myTable');
         var unions = [
-            {'server':'S41', 'name':'はのはの', 'elim_rank': 1}, 
-            {'server':'S60', 'name':'あおほた部屋', 'elim_rank': 2}, 
-            {'server':'S45', 'name':'飛春の野望', 'elim_rank': 3}, 
-            {'server':'S10', 'name':'八咫烏', 'elim_rank': 4}, 
+            {'server':'S40', 'name':'南国丸', 'elim_rank': 1}, 
+            {'server':'S42', 'name':'武装戦線', 'elim_rank': 2}, 
+            {'server':'S6', 'name':'予後不良', 'elim_rank': 3}, 
+            {'server':'S10', 'name':'覇王', 'elim_rank': 4}, 
 
-            {'server':'S44', 'name':'毎日が本能寺', 'elim_rank': 5}, 
-            {'server':'S27', 'name':'不倶戴天', 'elim_rank': 6}, 
-            {'server':'S49', 'name':'戦国松千代祭', 'elim_rank': 7}, 
-            {'server':'S15', 'name':'餃子の王道', 'elim_rank': 8}, 
+            {'server':'S68', 'name':'月', 'elim_rank': 5}, 
+            {'server':'S15', 'name':'和国一門', 'elim_rank': 6}, 
+            {'server':'S50', 'name':'南葛FC', 'elim_rank': 7}, 
+            {'server':'S39', 'name':'武田騎兵隊', 'elim_rank': 8}, 
 
-            {'server':'S59', 'name':'桜梅桃李', 'elim_rank': 9}, 
-            {'server':'S55', 'name':'夢幻泡影', 'elim_rank': 10}, 
-            {'server':'S23', 'name':'摩利支天', 'elim_rank': 11},
-            {'server':'S4', 'name':'如水', 'elim_rank': 12}, 
+            {'server':'S67', 'name':'るっちゃん教', 'elim_rank': 9}, 
+            {'server':'S9', 'name':'農民', 'elim_rank': 10}, 
+            {'server':'S13', 'name':'元祖聖将', 'elim_rank': 11},
+            {'server':'S69', 'name':'田楽', 'elim_rank': 12}, 
             
-            {'server':'S3', 'name':'夜桜', 'elim_rank': 13},
-            {'server':'S21', 'name':'蝉時雨', 'elim_rank': 14}, 
-            {'server':'S44', 'name':'蒼天', 'elim_rank': 15}, 
-            {'server':'S21', 'name':'戦国の夜明け', 'elim_rank': 16}
+            {'server':'S60', 'name':'神羅天征', 'elim_rank': 13},
+            {'server':'S1', 'name':'百花繚乱', 'elim_rank': 14}, 
+            {'server':'S13', 'name':'キムファーム', 'elim_rank': 15}, 
+            {'server':'S1', 'name':'毘沙門天', 'elim_rank': 16}
         ]
         
         
-        var result = [[1,1,0,1,1,1,0,1,0,1,0,0,0,1,0,0], [,,, ,,, ,,, ,,,], [], []];
-        let initialOrder = [0, 15, 7, 8, 3, 12, 4, 11, 1, 14, 6, 9, 2, 13, 5, 10]
+        var result = [[1,1,1,1,1,1,1,0,0,1,0,0,0,0,0,0], [,,,, ,,,, ,,,, ,,,], [], []];
+        let initialOrder = [0, 15, 6, 8, 3, 12, 4, 11, 1, 14, 7, 9, 2, 13, 5, 10];
         let opp = getMatchups(result, initialOrder);
 
         var tmp_point = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
